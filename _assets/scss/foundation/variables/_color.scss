@@ -1,0 +1,36 @@
+
+// Variables カラー
+//--------------------------------------------------------------------------
+
+//ライトテーマ時のカラー
+:root {
+  --color-base: #f1f5f9;
+  --color-base-thin: #fff;
+  --color-primary: #000000;
+  --color-primary-thin: #6e7b85;
+  --color-secondary: #eee;
+  --color-gray-thin: #5c93bb2b;
+}
+
+//ダークテーマ時のカラー
+[data-mode="dark"] {
+  --color-base: #131418;
+  --color-base-thin: #22262F;
+  --color-primary: #fff;
+  --color-primary-thin: #989BA3;
+  --color-secondary: #313746;
+  --color-gray-thin: transparent;
+}
+
+//テーマ切り替えで変わる色
+$color-base: var(--color-base);
+$color-base-thin: var(--color-base-thin);
+$color-primary: var(--color-primary);
+$color-primary-thin: var(--color-primary-thin);
+$color-secondary: var(--color-secondary);
+$color-gray-thin: var(--color-gray-thin);
+
+//テーマ切り替えでも変わらない色
+$color-accent: #807aff;
+$color-base-fix: #fff;
+$color-primary-fix: #000;
