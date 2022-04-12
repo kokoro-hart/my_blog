@@ -1,0 +1,47 @@
+{
+  "siteInfo": {
+    "name": "KT MEDIA",
+    "siteUrl": "kt-media.site"
+  },
+  "pages": {
+    "home": {
+      "name": "記事一覧",
+      "description": "HTML、CSS、JavaScriptなどフロントエンドの技術面やWebデザイン関連についての記事や筆者の考え方を投稿していくブログです。",
+      "type": "website",
+      "slug": "/"
+    },
+    "about": {
+      "name": "このサイトについて",
+      "description": "HTML、CSS、JavaScriptなどフロントエンドの技術面やWebデザイン関連についての記事や筆者の考え方を投稿していくブログです。",
+      "type": "article",
+      "slug": "/about/"
+    },
+    "single": {
+      "name": "記事のタイトル",
+      "description": "HTML、CSS、JavaScriptなどフロントエンドの技術面やWebデザイン関連についての記事や筆者の考え方を投稿していくブログです。",
+      "type": "article",
+      "slug": "/single/"
+    },
+    "contact": {
+      "name": "お問い合わせ",
+      "description": "HTML、CSS、JavaScriptなどフロントエンドの技術面やWebデザイン関連についての記事や筆者の考え方を投稿していくブログです。",
+      "type": "article",
+      "slug": "/contact/"
+    }
+  },
+
+  "nav": {
+    "home": {
+      "name": "記事一覧",
+      "slug": "/"
+    },
+    "about": {
+      "name": "このサイトについて",
+      "slug": "/about/"
+    },
+    "contact": {
+      "name": "お問い合わせ",
+      "slug": "/contact/"
+    }
+  }
+}
