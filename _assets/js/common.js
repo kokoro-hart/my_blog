@@ -3,11 +3,10 @@
  * webpack.config.jsにて定義している
  */
 
-//jQueryを使うとき
-//import $ from "@modules/jquery";
-//slickを使うとき
-// import '@modules/slick-carousel';
+//シンタックスハイライトプラグイン heighlight.js init
+import hljs from '@modules/highlight.js';
 
+hljs.initHighlightingOnLoad();
 
 //デバイス幅360px以下はリサイズして表示
 !(function () {
@@ -24,6 +23,3 @@
   addEventListener('resize', switchViewport, false);
   switchViewport();
 })();
-
-//シンタックスハイライトプラグイン heighlight.js init
-hljs.initHighlightingOnLoad();
