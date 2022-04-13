@@ -1,0 +1,40 @@
+@use "foundation/global";
+
+// Component ページネーション 
+//--------------------------------------------------------------------------
+
+.c-pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 10px;  
+  margin-right: 14px;
+  box-shadow: global.$box-shadow;
+  background-color: global.$color-base-thin;
+  color: global.$color-primary;
+  @include global.fz(14, 16);
+  @include global.lh(1);
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+}
+
+.page-numbers.current {
+  background-color: global.$color-primary;
+  color: global.$color-base-thin;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}

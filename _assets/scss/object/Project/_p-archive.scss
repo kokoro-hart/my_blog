@@ -1,0 +1,81 @@
+@use "foundation/global";
+
+// Project ホーム
+//--------------------------------------------------------------------------
+
+.p-archive {
+  flex: 1;
+  background-color: global.$color-base;
+}
+
+.p-archive__inner {
+  padding-top: 52px;
+  padding-bottom: 84px;
+
+  @include global.mq(md) {
+    padding-top: 84px;
+    padding-bottom: 134px;
+  }
+
+  @include global.mq(lg) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.p-archive__heading {
+  @include global.fz(24, 28);
+  @include global.lh(1);
+  font-weight: 600;
+}
+
+.p-archive__main {
+  @include global.mq(lg) {
+    width: calc(100% - 290px - 3%);
+  }
+}
+
+.p-archive__cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 32px;
+
+  &::before {
+    content: "";
+    width: calc(33.333% - 3% * 2 / 3);
+    order: 1;
+  }
+}
+
+.p-archive__card {
+  width: 100%;
+  margin-bottom: 32px;
+  width: calc(50% - 3% / 2);
+
+  @include global.mq(sm) {
+    width: calc(50% - 3% / 2);
+    margin-bottom: 3%;
+  }
+
+  @include global.mq(xl) {
+    width: calc(33.333% - 3% * 2 / 3);
+  }
+}
+
+.p-archive__sidebar {
+  width: 100%;
+
+  @include global.mq(lg) {
+    max-width: 290px;
+  }
+}
+
+.p-archive__pagination {
+  width: 100%;
+  margin-top: 24px;
+
+  @include global.mq(md) {
+    margin-top: 32px;
+  }
+}

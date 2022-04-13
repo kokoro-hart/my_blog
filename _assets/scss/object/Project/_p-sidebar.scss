@@ -1,0 +1,90 @@
+@use "foundation/global";
+
+// Project サイドバー
+//--------------------------------------------------------------------------
+
+.p-sidebar {
+  border-radius: 10px;
+  box-shadow: global.$box-shadow;
+  background-color: global.$color-base-thin;
+  padding: 30px 20px 40px;
+  margin-top: 84px;
+
+  @include global.mq(lg) {
+    margin-top: 0;
+  }
+}
+
+.p-sidebar__sticky {
+  position: sticky;
+  top: 0;
+}
+
+.p-sidebar__heading {
+  @include global.fz(16, 18);
+  @include global.lh(1.2);
+  font-weight: 600;
+}
+
+.p-sidebar__card-thumbnail {
+  position: relative;
+  width: 100%;
+  padding-top: calc(9 / 16 * 100%);
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.p-sidebar__card-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  @include global.object-fit(cover, center)
+}
+
+.p-sidebar__card {
+  display: block;
+  margin-top: 18px;
+}
+
+.p-sidebar__card-text {
+  margin-top: 12px;
+  @include global.fz(14);
+  @include global.lh(1.44);
+  color: global.$color-primary;
+  font-weight: 600;
+}
+
+.p-sidebar__content {
+  padding-top: 48px;
+}
+
+.p-sidebar__body {
+  margin-top: 18px;
+}
+
+.p-sidebar__item {
+  &:not(:first-child) {
+    margin-top: 10px; 
+  }
+}
+
+.p-sidebar__link {
+  display: block;
+  color: global.$color-primary-thin;
+  @include global.fz(14);
+  @include global.lh(1.44);
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    color: global.$color-primary;
+  }
+}
+
+.p-sidebar__blank-icon {
+  transform: translateY(1px);
+}
