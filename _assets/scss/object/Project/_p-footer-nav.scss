@@ -1,0 +1,26 @@
+@use "foundation/global";
+
+// Project フッターナビゲーション
+//--------------------------------------------------------------------------
+
+.p-footer-nav {
+  display: flex;
+}
+
+.p-footer-nav__item {
+  &:not(:first-child) {
+    margin-left: 24px;
+    
+    @include global.mq(md) {
+      margin-left: 32px;
+    }
+  }
+}
+
+.p-footer-nav__link {
+  display: block;
+  color: global.$color-primary;
+  @include global.fz(14);
+  @include global.lh(1.44);
+  font-weight: 600;
+}
