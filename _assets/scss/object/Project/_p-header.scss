@@ -1,0 +1,48 @@
+@use "foundation/global";
+
+// Project ヘッダー
+//--------------------------------------------------------------------------
+
+.p-header {
+  padding-top: 24px;
+  background-color: global.$color-base-thin;
+  border-bottom: 1px solid global.$color-gray-thin;
+
+  @include global.mq(md) {
+    padding-top: 32px;
+  }
+}
+
+.p-header__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.p-header__text {
+  @include global.fz(12,14);
+  @include global.lh(1.7);
+  margin-top: 8px;
+  font-weight: 600;
+  color: global.$color-primary-thin;
+
+  @include global.mq(md) {
+    margin-top: 4px;
+  }
+}
+
+.p-header__logo {
+  @include global.fz(24, 32);
+  @include global.lh(1);
+  font-weight: 600;
+  color: global.$color-primary;
+}
+
+.p-header__foot {
+  margin-top: 32px;
+
+  @include global.mq(md) {
+    margin-top: 40px;
+  }
+}

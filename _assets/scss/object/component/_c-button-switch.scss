@@ -1,0 +1,77 @@
+@use "foundation/global";
+
+// Component ダークテーマ切り替えボタン
+//--------------------------------------------------------------------------
+
+.c-button-switch__label {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border-radius: 20px;
+  width: 80px;
+  height: 30px;
+  background-color: global.$color-primary-thin;
+  cursor: pointer;
+
+  @include global.mq(md) {
+    border-radius: 30px;
+    width: 100px;
+    height: 40px;
+  }
+
+  &::before {
+    content: "Light";
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: global.$color-base;
+    @include global.fz(12, 14);
+    @include global.lh(1);
+    font-weight: 600;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: global.$color-base;
+    transition: left 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65), width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65),
+      transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65);
+
+    @include global.mq(md) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.c-button-switch__label:active::after {
+  width: 30px;
+
+  @include global.mq(md) {
+    width: 50px;
+  }
+}
+
+.c-button-switch__input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.c-button-switch__input:checked + .c-button-switch__label::after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+.c-button-switch__input:checked + .c-button-switch__label::before {
+  content: "Dark";
+  left: 15px;
+  right: auto;
+}

@@ -1,0 +1,37 @@
+@use "foundation/global";
+
+// Project グローバルナビゲーション
+//--------------------------------------------------------------------------
+
+.p-global-nav__list {
+  display: flex;
+}
+
+.p-global-nav__item {
+  &:not(:first-child) {
+    margin-left: 24px;
+
+    @include global.mq(md) {
+      margin-left: 32px;
+    }
+  }
+}
+
+.p-global-nav__link {
+  display: block;
+  padding: 8px 0;
+  color: global.$color-primary-thin;
+  @include global.fz(14, 16);
+  @include global.lh(1.2, 1.4);
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    color: global.$color-primary;
+  }
+}
+
+.p-global-nav__link.is-current {
+  border-bottom: 2px solid global.$color-primary;
+  color: global.$color-primary;
+}

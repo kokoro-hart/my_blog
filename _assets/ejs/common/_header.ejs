@@ -1,0 +1,75 @@
+<% let title =jsonData.pages[pageId].name + ' | ' + jsonData.siteInfo.name%>
+<% let description = jsonData.pages[pageId].description %>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width">
+
+  <title><%= title %></title>
+  <meta name="description" content="<%= description %>">
+
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:description" content="<%= description %>">
+  <meta property="og:url" content="<%= jsonData.siteInfo.siteUrl + jsonData.pages[pageId].slug %>">
+  <meta property="og:type" content="<%= jsonData.pages[pageId].type %> ">
+  <meta property="og:local" content="ja_JP">
+  <meta property="og:image" content="/img/common/og-image.png">
+  <meta property="og:site_name" content="<%= jsonData.siteInfo.siteUrl %> ">
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/default.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+
+  <div class="site-wrapper">
+    <header class="l-header p-header">
+      <div class="p-header__inner l-container">
+        <div class="p-header__head">
+          <% if (pageId==='home' ){ %>
+          <h1 class="p-header__logo">
+            <a class="p-header__logo-link">
+              KT MEDIA
+            </a>
+          </h1>
+          <% } else { %>
+            <h1 class="p-header__logo">
+              <a href="/" class="p-header__logo-link">
+                KT MEDIA
+              </a>
+            </h1>
+          <% } %>
+          <button class="p-header__switch-button c-button-switch" aria-label="カラーテーマ切り替え">
+            <input class="c-button-switch__input" id="js-switch-button" type="checkbox">
+            <label class="c-button-switch__label" for="js-switch-button"></label>
+          </button>
+        </div>
+        <p class="p-header__text">
+          マークアップ、フロントエンド、Webデザインについての学習ブログ。
+        </p>
+        <div class="p-header__foot">
+          <nav class="p-global-nav">
+            <ul class="p-global-nav__list">
+              <% for(let page in jsonData.nav){ %>
+                <% if (page===pageId) { %>
+                <li class="p-global-nav__item">
+                  <a class="p-global-nav__link is-current">
+                    <%= jsonData.nav[page].name %>
+                  </a>
+                </li>
+                <% } else { %>
+                <li class="p-global-nav__item">
+                  <a href="<%= jsonData.nav[page].slug %>" class="p-global-nav__link">
+                    <%= jsonData.nav[page].name %>
+                  </a>
+                </li>
+                <% } %>
+              <% }; %>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
