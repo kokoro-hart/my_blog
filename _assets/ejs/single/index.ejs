@@ -1,0 +1,218 @@
+<% let pageId='single' ; %>
+
+  <%- include('../common/_header', {pageId:pageId }) %>
+
+    <% console.log(jsonData) %>
+      <div class="p-archive p-single">
+        <div class="p-archive__inner l-container">
+          <main class="p-archive__main p-single__main">
+            <div class="p-single__head">
+              <time class="p-single__date">
+                2022/04/11
+              </time>
+              <h2 class="p-single__heading">
+                Vue-CLIのインストール時、vueコマンドエラーについてVue-CLIのインストール時、vueコマンドエラーについて
+              </h2>
+              <a href="" class="p-single__category">
+                Vue.js
+              </a>
+            </div>
+            <div class="p-single__thumbnail">
+              <img src="/img/common/img-vue.jpeg" alt="" class="p-single__img">
+            </div>
+            <div class="p-single__contents">
+              <div class="toc">
+                <div class="toc-title">
+                  目次
+                </div>
+                <ul class="toc-list">
+                  <li>
+                    <a href="">
+                      クリッカブルな要素をdivやspanで作らない h1
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      リンクやボタン、フォームのinput要素のoutlineを消さない h2
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      どう実装したら良いか？ h2
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <h1>クリッカブルな要素をdivやspanで作らない h1</h1>
+              <pre>
+                <code>
+                !(function () {
+                  const viewport = document.querySelector('meta[name="viewport"]');
+                  function switchViewport() {
+                    const value =
+                      window.outerWidth > 360
+                          ? 'width=device-width,initial-scale=1'
+                          : 'width=360';
+                        if (viewport.getAttribute('content') !== value) {
+                        viewport.setAttribute('content', value);
+                      }
+                    }
+                  addEventListener('resize', switchViewport, false);
+                  switchViewport();
+                })();
+                </code>
+              </pre>
+              <p>
+                Nextは、Web制作周りやEC関連の<a href="">リンクが入ります</a>記事を定期的に更新している技術ブログです。
+                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+              </p>
+              <h2>どう実装したら良いか？ h2</h2>
+              <p>
+                Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
+                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+              </p>
+              <p>
+                Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
+                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+              </p>
+              <h2>リンクやボタン、フォームのinput要素のoutlineを消さない h2</h2>
+              <p>
+                Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
+                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+              </p>
+              <h2>何が問題なのか？ h2</h2>
+              <figure class="wp-block-image">
+                <img src="/img/common/mv02.jpeg" alt="">
+              </figure>
+              <ul>
+                <li>
+                  HTML / CSS
+                </li>
+                <li>
+                  Scss
+                </li>
+                <li>
+                  JavaScript
+                </li>
+                <li>
+                  JQuery
+                </li>
+                <li>
+                  WordPress
+                </li>
+              </ul>
+              <h3>私について h3</h3>
+              <p>
+                Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
+                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+              </p>
+
+            </div>
+          </main>
+
+          <aside class="p-archive__sidebar p-sidebar">
+            <div class="p-sidebar__head">
+              <h2 class="p-sidebar__heading">
+                プロフィール
+              </h2>
+              <a href="" class="p-sidebar__card">
+                <div class="p-sidebar__card-thumbnail">
+                  <img src="/img/common/portfolio.png" alt="" class="p-sidebar__card-img">
+                </div>
+                <p class="p-sidebar__card-text">
+                  ポートフォリオサイトを公開しました。
+                </p>
+              </a>
+            </div>
+            <div class="p-sidebar__content">
+              <h2 class="p-sidebar__heading">
+                メディア・SNS
+              </h2>
+              <div class="p-sidebar__body">
+                <ul class="p-sidebar__list">
+                  <li class="p-sidebar__item">
+                    <a href="https://twitter.com/coco_hack_ll" class="p-sidebar__link" target="_blank"
+                      rel="noopener noreferrer">
+                      Twitter<span class="u-hidden">（(新しいウィンドウが開きます)）</span>
+                      <svg class="p-sidebar__blank-icon" width="13" height="13" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="m21 13v10h-21v-19h12v2h-10v15h17v-8zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172z" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="p-sidebar__item">
+                    <a href="https://github.com/kokoro-hart" class="p-sidebar__link" target="_blank"
+                      rel="noopener noreferrer">
+                      GitHub<span class="u-hidden">（(新しいウィンドウが開きます)）</span>
+                      <svg class="p-sidebar__blank-icon" width="13" height="13" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="m21 13v10h-21v-19h12v2h-10v15h17v-8zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172z" />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="p-sidebar__content p-sidebar__sticky">
+              <h2 class="p-sidebar__heading">
+                カテゴリ
+              </h2>
+              <div class="p-sidebar__body">
+                <ul class="p-sidebar__list">
+                  <li class="p-sidebar__item">
+                    <a href="" class="p-sidebar__link">
+                      HTML / CSS
+                    </a>
+                  </li>
+                  <li class="p-sidebar__item">
+                    <a href="" class="p-sidebar__link">
+                      JavaScript
+                    </a>
+                  </li>
+                  <li class="p-sidebar__item">
+                    <a href="" class="p-sidebar__link">
+                      WordPress
+                    </a>
+                  </li>
+                  <li class="p-sidebar__item">
+                    <a href="" class="p-sidebar__link">
+                      git
+                    </a>
+                  </li>
+                  <li class="p-sidebar__item">
+                    <a href="" class="p-sidebar__link">
+                      Webデザイン
+                    </a>
+                  </li>
+                  <li class="p-sidebar__item">
+                    <a href="" class="p-sidebar__link">
+                      UI / UX
+                    </a>
+                  </li>
+                  <li class="p-sidebar__item">
+                    <a href="" class="p-sidebar__link">
+                      アクセシビリティ
+                    </a>
+                  </li>
+                  <li class="p-sidebar__item">
+                    <a href="" class="p-sidebar__link">
+                      インタラクションデザイン
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+
+      <%- include('../common/_footer', {pageId:pageId }) %>
