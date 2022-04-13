@@ -1,16 +1,15 @@
 @use "foundation/global";
 
 // Project 記事詳細ページ
-//--------------------------------------------------------------------------
-
-.p-single__main {
+//-------------------------------------------------------------------------
+.p-single__inner {
   border-radius: 10px;
   box-shadow: global.$box-shadow;
   background-color: global.$color-base-thin;
-  padding: 20px 16px;
+  padding: 20px 16px 40px;
 
   @include global.mq(md) {
-    padding: 40px;
+    padding: 40px 40px 80px;
   }
 }
 

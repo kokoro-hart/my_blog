@@ -3,72 +3,74 @@
   <%- include('../common/_header', {pageId:pageId }) %>
 
     <% console.log(jsonData) %>
-      <div class="p-archive p-single">
+      <div class="p-archive">
         <div class="p-archive__inner l-container">
-          <main class="p-archive__main p-single__main">
-            <div class="p-single__head">
-              <h2 class="p-single__heading">
-                お問い合わせ
-              </h2>
-            </div>
-            <div class="p-single__contents">
-              <p>
-                ご覧頂きありがとうごさいます。<br>
-                ご依頼・ご質問等あれば下記フォームより御連絡下さい。<br>
-                また、当ブログ掲載されている内容についてご指摘などございましたら下記まで御連絡下さい。
-              </p>
-
-              <div class="p-form">
-                <dl class="p-form__dl">
-                  <!--お名前-->
-                  <div class="p-form__row">
-                    <dt class="p-form__dt">
-                      <label class="p-form__label p-form__label--required" for="your-name">お名前</label>
-                    </dt>
-                    <dd class="p-form__dd">
-                      <input class="p-form__input" id="your-name" type="text" placeholder="山田　太郎" autocomplete="name" required>
-                    </dd>
-                  </div>
-                  <!--/お名前-->
-
-                  <!--メールアドレス-->
-                  <div class="p-form__row">
-                    <dt class="p-form__dt">
-                      <label class="p-form__label p-form__label--required" for="your-email">メールアドレス</label>
-                    </dt>
-                    <dd class="p-form__dd">
-                      <input class="p-form__input" id="your-email" type="email" placeholder="xxx@example.com" autocomplete="email"
-                        required>
-                    </dd>
-                  </div>
-                  <!--/メールアドレス-->
-                  
-                  <!--件名-->
-                  <div class="p-form__row">
-                    <dt class="p-form__dt">
-                      <label class="p-form__label" for="your-subject">件名</label>
-                    </dt>
-                    <dd class="p-form__dd">
-                      <input class="p-form__input" id="your-subject" type="text" placeholder="">
-                    </dd>
-                  </div>
-                  <!--/件名-->
+          <main class="p-archive__main p-single">
+            <div class="p-single__inner">
+              <div class="p-single__head">
+                <h2 class="p-single__heading">
+                  お問い合わせ
+                </h2>
+              </div>
+              <div class="p-single__contents">
+                <p>
+                  ご覧頂きありがとうごさいます。<br>
+                  ご依頼・ご質問等あれば下記フォームより御連絡下さい。<br>
+                  また、当ブログ掲載されている内容についてご指摘などございましたら下記まで御連絡下さい。
+                </p>
               
-                  <!--お問い合わせ内容-->
-                  <div class="p-form__row">
-                    <dt class="p-form__dt">
-                      <label class="p-form__label p-form__label--required" for="your-textarea">お問い合わせ内容</label>
-                    </dt>
-                    <dd class="p-form__dd">
-                      <textarea class="p-form__input p-form__textarea" id="your-textarea" placeholder="ご自由にご記入ください。"
-                        required></textarea>
-                    </dd>
-                  </div>
-                  <!--/お問い合わせ内容-->
-                </dl>
+                <div class="p-form">
+                  <dl class="p-form__dl">
+                    <!--お名前-->
+                    <div class="p-form__row">
+                      <dt class="p-form__dt">
+                        <label class="p-form__label p-form__label--required" for="your-name">お名前</label>
+                      </dt>
+                      <dd class="p-form__dd">
+                        <input class="p-form__input" id="your-name" type="text" placeholder="山田　太郎" autocomplete="name" required>
+                      </dd>
+                    </div>
+                    <!--/お名前-->
               
-                <div class="p-form__submit-wrapper">
-                  <input type="submit" class="c-button-submit" value="送信">
+                    <!--メールアドレス-->
+                    <div class="p-form__row">
+                      <dt class="p-form__dt">
+                        <label class="p-form__label p-form__label--required" for="your-email">メールアドレス</label>
+                      </dt>
+                      <dd class="p-form__dd">
+                        <input class="p-form__input" id="your-email" type="email" placeholder="xxx@example.com" autocomplete="email"
+                          required>
+                      </dd>
+                    </div>
+                    <!--/メールアドレス-->
+              
+                    <!--件名-->
+                    <div class="p-form__row">
+                      <dt class="p-form__dt">
+                        <label class="p-form__label" for="your-subject">件名</label>
+                      </dt>
+                      <dd class="p-form__dd">
+                        <input class="p-form__input" id="your-subject" type="text" placeholder="">
+                      </dd>
+                    </div>
+                    <!--/件名-->
+              
+                    <!--お問い合わせ内容-->
+                    <div class="p-form__row">
+                      <dt class="p-form__dt">
+                        <label class="p-form__label p-form__label--required" for="your-textarea">お問い合わせ内容</label>
+                      </dt>
+                      <dd class="p-form__dd">
+                        <textarea class="p-form__input p-form__textarea" id="your-textarea" placeholder="ご自由にご記入ください。"
+                          required></textarea>
+                      </dd>
+                    </div>
+                    <!--/お問い合わせ内容-->
+                  </dl>
+              
+                  <div class="p-form__submit-wrapper">
+                    <input type="submit" class="c-button-submit" value="送信">
+                  </div>
                 </div>
               </div>
             </div>

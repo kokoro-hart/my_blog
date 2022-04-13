@@ -1,0 +1,32 @@
+@use "foundation/global";
+
+// Project 関連記事
+//--------------------------------------------------------------------------
+
+.p-related {
+  width: 100%;
+  padding-bottom: 84px;
+}
+
+.p-related__heading {
+  @include global.fz(24, 28);
+  @include global.lh(1);
+  font-weight: 600;
+}
+
+.p-related__cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+.p-related__card {
+  width: calc(50% - 3% / 2);
+  margin-bottom: 3%;
+
+  @include global.mq(md) {
+    margin-bottom: 0;
+    width: calc(25% - 3% * 3 / 4);
+  }
+}

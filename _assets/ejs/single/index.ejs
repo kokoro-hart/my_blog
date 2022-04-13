@@ -3,119 +3,200 @@
   <%- include('../common/_header', {pageId:pageId }) %>
 
     <% console.log(jsonData) %>
-      <div class="p-archive p-single">
+      <div class="p-archive">
         <div class="p-archive__inner l-container">
-          <main class="p-archive__main p-single__main">
-            <div class="p-single__head">
-              <time class="p-single__date">
-                2022/04/11
-              </time>
-              <h2 class="p-single__heading">
-                Vue-CLIのインストール時、vueコマンドエラーについてVue-CLIのインストール時、vueコマンドエラーについて
-              </h2>
-              <a href="" class="p-single__category">
-                Vue.js
-              </a>
-            </div>
-            <div class="p-single__thumbnail">
-              <img src="/img/common/img-vue.jpeg" alt="" class="p-single__img">
-            </div>
-            <div class="p-single__contents">
-              <div class="toc">
-                <div class="toc-title">
-                  目次
+          <main class="p-archive__main p-single">
+            <div class="p-single__inner">
+              <div class="p-single__head">
+                <time class="p-single__date">
+                  2022/04/11
+                </time>
+                <h2 class="p-single__heading">
+                  Vue-CLIのインストール時、vueコマンドエラーについてVue-CLIのインストール時、vueコマンドエラーについて
+                </h2>
+                <a href="" class="p-single__category">
+                  Vue.js
+                </a>
+              </div>
+              <div class="p-single__thumbnail">
+                <img src="/img/common/img-vue.jpeg" alt="" class="p-single__img">
+              </div>
+              <div class="p-single__contents">
+                <div class="toc">
+                  <div class="toc-title">
+                    目次
+                  </div>
+                  <ul class="toc-list">
+                    <li>
+                      <a href="">
+                        クリッカブルな要素をdivやspanで作らない h1
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        リンクやボタン、フォームのinput要素のoutlineを消さない h2
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        どう実装したら良いか？ h2
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-                <ul class="toc-list">
+                <h1>クリッカブルな要素をdivやspanで作らない h1</h1>
+                <pre>
+                  <code>
+                  !(function () {
+                    const viewport = document.querySelector('meta[name="viewport"]');
+                    function switchViewport() {
+                      const value =
+                        window.outerWidth > 360
+                            ? 'width=device-width,initial-scale=1'
+                            : 'width=360';
+                          if (viewport.getAttribute('content') !== value) {
+                          viewport.setAttribute('content', value);
+                        }
+                      }
+                    addEventListener('resize', switchViewport, false);
+                    switchViewport();
+                  })();
+                  </code>
+                </pre>
+                <p>
+                  Nextは、Web制作周りやEC関連の<a href="">リンクが入ります</a>記事を定期的に更新している技術ブログです。
+                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+                </p>
+                <h2>どう実装したら良いか？ h2</h2>
+                <p>
+                  Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
+                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+                </p>
+                <p>
+                  Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
+                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+                </p>
+                <h2>リンクやボタン、フォームのinput要素のoutlineを消さない h2</h2>
+                <p>
+                  Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
+                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+                </p>
+                <h2>何が問題なのか？ h2</h2>
+                <figure class="wp-block-image">
+                  <img src="/img/common/mv02.jpeg" alt="">
+                </figure>
+                <ul>
                   <li>
-                    <a href="">
-                      クリッカブルな要素をdivやspanで作らない h1
-                    </a>
+                    HTML / CSS
                   </li>
                   <li>
-                    <a href="">
-                      リンクやボタン、フォームのinput要素のoutlineを消さない h2
-                    </a>
+                    Scss
                   </li>
                   <li>
-                    <a href="">
-                      どう実装したら良いか？ h2
-                    </a>
+                    JavaScript
+                  </li>
+                  <li>
+                    JQuery
+                  </li>
+                  <li>
+                    WordPress
                   </li>
                 </ul>
+                <h3>私について h3</h3>
+                <p>
+                  Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
+                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
+                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+                </p>
+              
               </div>
-              <h1>クリッカブルな要素をdivやspanで作らない h1</h1>
-              <pre>
-                <code>
-                !(function () {
-                  const viewport = document.querySelector('meta[name="viewport"]');
-                  function switchViewport() {
-                    const value =
-                      window.outerWidth > 360
-                          ? 'width=device-width,initial-scale=1'
-                          : 'width=360';
-                        if (viewport.getAttribute('content') !== value) {
-                        viewport.setAttribute('content', value);
-                      }
-                    }
-                  addEventListener('resize', switchViewport, false);
-                  switchViewport();
-                })();
-                </code>
-              </pre>
-              <p>
-                Nextは、Web制作周りやEC関連の<a href="">リンクが入ります</a>記事を定期的に更新している技術ブログです。
-                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
-              </p>
-              <h2>どう実装したら良いか？ h2</h2>
-              <p>
-                Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
-                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
-              </p>
-              <p>
-                Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
-                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
-              </p>
-              <h2>リンクやボタン、フォームのinput要素のoutlineを消さない h2</h2>
-              <p>
-                Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
-                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
-              </p>
-              <h2>何が問題なのか？ h2</h2>
-              <figure class="wp-block-image">
-                <img src="/img/common/mv02.jpeg" alt="">
-              </figure>
-              <ul>
-                <li>
-                  HTML / CSS
-                </li>
-                <li>
-                  Scss
-                </li>
-                <li>
-                  JavaScript
-                </li>
-                <li>
-                  JQuery
-                </li>
-                <li>
-                  WordPress
-                </li>
-              </ul>
-              <h3>私について h3</h3>
-              <p>
-                Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
-                学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
-              </p>
-
             </div>
           </main>
 
           <%- include('../common/_sidebar') %>
+        </div>
+        <div class="p-related l-container l-container--small">
+          <h2 class="p-related__heading">
+            関連記事
+          </h2>
+          <div class="p-related__cards">
+            <article class="p-related__card">
+              <a href="/single/" class="p-card">
+                <span class="p-card__category">
+                  Vue.js
+                </span>
+                <div class="p-card__thumbnail">
+                  <img src="/img/common/img-vue.jpeg" alt="" class="p-card__img">
+                </div>
+                <div class="p-card__body">
+                  <h3 class="p-card__title">
+                    Vue-CLIのインストール時、vueコマンドエラーについてVue-CLIのインストール時、vueコマンドエラーについて
+                  </h3>
+                  <time class="p-card__date" datetime="">
+                    2022/04/06
+                  </time>
+                </div>
+              </a>
+            </article>
+            <article class="p-related__card">
+              <a href="/single/" class="p-card">
+                <span class="p-card__category">
+                  HTML / CSS
+                </span>
+                <div class="p-card__thumbnail">
+                  <img src="/img/common/img-html.jpeg" alt="" class="p-card__img">
+                </div>
+                <div class="p-card__body">
+                  <h3 class="p-card__title">
+                    カード型モジュールのコーディング時に気をつけること
+                  </h3>
+                  <time class="p-card__date" datetime="">
+                    2022/03/31
+                  </time>
+                </div>
+              </a>
+            </article>
+            <article class="p-related__card">
+              <a href="/single/" class="p-card">
+                <span class="p-card__category">
+                  HTML / CSS
+                </span>
+                <div class="p-card__thumbnail">
+                  <img src="/img/common/img-scss.jpeg" alt="" class="p-card__img">
+                </div>
+                <div class="p-card__body">
+                  <h3 class="p-card__title">
+                    Webのダークモード対応をSCSS変数で管理する方法を考える
+                  </h3>
+                  <time class="p-card__date" datetime="">
+                    2022/03/31
+                  </time>
+                </div>
+              </a>
+            </article>
+            <article class="p-related__card">
+              <a href="/single/" class="p-card">
+                <span class="p-card__category">
+                  HTML / CSS
+                </span>
+                <div class="p-card__thumbnail">
+                  <img src="/img/common/img-scss.jpeg" alt="" class="p-card__img">
+                </div>
+                <div class="p-card__body">
+                  <h3 class="p-card__title">
+                    Webのダークモード対応をSCSS変数で管理する方法を考える
+                  </h3>
+                  <time class="p-card__date" datetime="">
+                    2022/03/31
+                  </time>
+                </div>
+              </a>
+            </article>
+          </div>
         </div>
       </div>
 
