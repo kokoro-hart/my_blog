@@ -1,0 +1,117 @@
+@use "foundation/global";
+
+// Project フォーム
+//--------------------------------------------------------------------------
+
+.p-form {
+  width: 100%;
+  margin-top: 32px;
+
+  @include global.mq(md) {
+    margin-top: 84px;
+  }
+}
+
+.p-form__dl {
+  width: 100%;
+}
+
+.p-form__row {
+  &:not(:first-child) {
+    margin-top: 24px;
+
+    @include global.mq(md) {
+      margin-top: 32px;
+    }
+  }
+}
+
+.p-form__dt {
+  width: 100%;
+}
+
+.p-form__dd {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.p-form__label {
+  position: relative;
+  @include global.fz(16);
+  @include global.lh(1.4);
+  font-weight: 600;
+
+  @include global.mq(md) {
+    max-width: calc(240px - 62px);
+  }
+}
+
+.p-form__label--required {
+  &::after {
+    content: "必須";
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    width: 36px;
+    height: 23px;
+    padding: 0 6px;
+    background-color: global.$color-accent;
+    color: global.$color-base-fix;
+    @include global.fz(12);
+    @include global.lh(1);
+    font-weight: 700;
+    white-space: nowrap;
+    line-height: 23px;
+
+    @include global.mq(md) {
+      right: -45px;
+    }
+  }
+}
+
+.p-form__input {
+  box-shadow: none;
+  appearance: none;
+  border-radius: 4px;
+  width: 100%;
+  padding: 18px 16px;
+  background-color: global.$color-secondary;
+  color: inherit;
+  @include global.fz(16);
+  @include global.lh(1.77);
+  font-family: inherit;
+
+  &::placeholder {
+    @include global.fz(16);
+    @include global.lh(1.77);
+    color: global.$color-primary-thin;
+  }
+}
+
+.p-form__textarea {
+  min-height: 200px;
+  
+  @include global.mq(md) {
+    min-height: 240px;
+  }
+}
+
+.p-form__submit-wrapper {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  @include global.mq(md) {
+    margin-top: 52px;
+  }
+}
+
+// コンタクトフォーム7用のスタイル
+//--------------------------------------------------------------------------
+.wpcf7-list-item {
+  margin-left: 0;
+}
