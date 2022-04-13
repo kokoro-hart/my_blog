@@ -34,7 +34,7 @@ body {
   @include global.fz(14, 16);
   @include global.lh(1.7, 1.6);
   font-weight: 400;
-  font-family: global.$font-family-ja;
+  font-family: global.$font-family;
 }
 
 body.is-drawer-active {
@@ -163,4 +163,28 @@ button:focus {
 :focus:not(:focus-visible),
 :focus:not(:focus-visible) + label {
   outline: 0; //キーボード操作"以外"でフォーカスされた際はoutlineを消す
+}
+
+//メインコンテンツにスキップするリンク
+.skip-link {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  @include global.fz(14);
+  @include global.lh(1);
+  font-weight: 600;
+}
+
+//フォーカスされていないときスキップリンクは隠す
+.skip-link:not(:focus) {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  white-space: nowrap;
+  border: 0;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
 }
