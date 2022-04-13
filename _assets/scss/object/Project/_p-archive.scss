@@ -14,7 +14,6 @@
 
   @include global.mq(md) {
     padding-top: 84px;
-    padding-bottom: 134px;
   }
 
   @include global.mq(lg) {
@@ -49,9 +48,8 @@
 }
 
 .p-archive__card {
-  width: 100%;
-  margin-bottom: 32px;
   width: calc(50% - 3% / 2);
+  margin-bottom: 32px;
 
   @include global.mq(sm) {
     width: calc(50% - 3% / 2);
