@@ -6,6 +6,9 @@
 //SVGスプライトをIEで使用するためのライブラリ
 import '@modules/svgxuse';
 
+//PrismJS
+import './lib/prism';
+
 //ダークテーマ切り替え
 import './modules/dark-theme.js';
 
