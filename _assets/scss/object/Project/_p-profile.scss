@@ -1,0 +1,73 @@
+@use "foundation/global";
+
+// Project プロフィール
+//--------------------------------------------------------------------------
+
+.p-profile__head {
+  display: flex;
+  align-items: center;
+  margin-top: 18px;
+
+  @include global.mq(md) {
+    margin-top: 24px;
+  }
+}
+
+.p-profile__img {
+  border: 1px solid global.$color-accent;
+  border-radius: 50%;
+  max-width: 110px;
+  width: 100%;
+
+}
+
+.p-profile__info {
+  margin-left: 24px;
+
+  @include global.mq(lg) {
+    margin-left: 12px;
+  }
+}
+
+.p-profile__name {
+  @include global.fz(16);
+  @include global.lh(1.44);
+  font-weight: 600;
+}
+
+.p-profile__text {
+  margin-top: 14px;
+  @include global.fz(14);
+  @include global.lh(1.71);
+}
+
+.p-profile__list {
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.p-profile__item {
+  &:not(:first-child) {
+    margin-left: 12px;
+
+    @include global.mq(lg) {
+      margin-left: 10px;
+    }
+  }
+}
+
+.p-profile__link {
+  display: block;
+
+  &:hover,
+  &:focus {
+    .p-profile__svg {
+      color: global.$color-primary;
+    }
+  }
+}
+
+.p-profile__svg {
+  color: global.$color-primary-thin;
+}

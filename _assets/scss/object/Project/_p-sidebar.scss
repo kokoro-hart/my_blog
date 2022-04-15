@@ -7,8 +7,8 @@
   border-radius: 10px;
   box-shadow: global.$box-shadow;
   background-color: global.$color-base-thin;
-  padding: 30px 20px 40px;
   margin-top: 84px;
+  padding: 40px 20px;
 
   @include global.mq(lg) {
     margin-top: 0;
@@ -26,43 +26,11 @@
   font-weight: 600;
 }
 
-.p-sidebar__card-thumbnail {
-  position: relative;
-  width: 100%;
-  padding-top: calc(9 / 16 * 100%);
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.p-sidebar__card-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  @include global.object-fit(cover, center)
-}
-
-.p-sidebar__card {
-  display: block;
-  margin-top: 18px;
-}
-
-.p-sidebar__card-text {
-  margin-top: 12px;
-  @include global.fz(14);
-  @include global.lh(1.44);
-  color: global.$color-primary;
-  font-weight: 600;
-}
-
 .p-sidebar__content {
-  padding-top: 48px;
+  padding-top: 52px;
 }
 
-.p-sidebar__body {
+.p-sidebar__list {
   margin-top: 18px;
 }
 
@@ -83,8 +51,4 @@
   &:focus {
     color: global.$color-primary;
   }
-}
-
-.p-sidebar__blank-icon {
-  transform: translateY(1px);
 }
