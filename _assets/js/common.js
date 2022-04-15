@@ -3,11 +3,6 @@
  * webpack.config.jsにて定義している
  */
 
-//シンタックスハイライトプラグイン heighlight.js init
-import hljs from '@modules/highlight.js';
-
-hljs.initHighlightingOnLoad();
-
 //デバイス幅360px以下はリサイズして表示
 !(function () {
   const viewport = document.querySelector('meta[name="viewport"]');
