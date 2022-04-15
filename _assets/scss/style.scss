@@ -25,6 +25,7 @@
 @use "object/Project/p-archive";
 @use "object/Project/p-card";
 @use "object/Project/p-sidebar";
+@use "object/Project/p-profile";
 @use "object/Project/p-single";
 @use "object/Project/p-related";
 @use "object/Project/p-form";
@@ -37,4 +38,4 @@
 
 /* External
    ----------------------------------------------------------------- */
-@use "external/heighlight";
+@use "external/prismjs";
