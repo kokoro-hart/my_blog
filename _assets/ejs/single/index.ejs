@@ -22,18 +22,18 @@
                 <img src="/img/common/img-vue.jpeg" alt="" class="p-single__img">
               </div>
               <div class="p-single__contents">
-                <div class="toc">
-                  <div class="toc-title">
+                <div class="p-toc">
+                  <div class="p-toc__title">
                     目次
                   </div>
-                  <ul class="toc-list">
+                  <ul class="p-toc__list">
                     <li>
-                      <a href="">
-                        クリッカブルな要素をdivやspanで作らない h1
+                      <a href="#toc-1">
+                        クリッカブルな要素をdivやspanで作らない h2
                       </a>
                     </li>
                     <li>
-                      <a href="">
+                      <a href="#toc-2">
                         リンクやボタン、フォームのinput要素のoutlineを消さない h2
                       </a>
                     </li>
@@ -44,31 +44,13 @@
                     </li>
                   </ul>
                 </div>
-                <h1>クリッカブルな要素をdivやspanで作らない h1</h1>
-                <pre>
-                  <code>
-                  !(function () {
-                    const viewport = document.querySelector('meta[name="viewport"]');
-                    function switchViewport() {
-                      const value =
-                        window.outerWidth > 360
-                            ? 'width=device-width,initial-scale=1'
-                            : 'width=360';
-                          if (viewport.getAttribute('content') !== value) {
-                          viewport.setAttribute('content', value);
-                        }
-                      }
-                    addEventListener('resize', switchViewport, false);
-                    switchViewport();
-                  })();
-                  </code>
-                </pre>
+                <h2 id="toc-1">クリッカブルな要素をdivやspanで作らない h2</h2>
                 <p>
                   Nextは、Web制作周りやEC関連の<a href="">リンクが入ります</a>記事を定期的に更新している技術ブログです。
                   学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
                   尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
                 </p>
-                <h2>どう実装したら良いか？ h2</h2>
+                <h2 id="toc-2">どう実装したら良いか？ h2</h2>
                 <p>
                   Nextは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
                   学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
@@ -86,9 +68,6 @@
                   尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
                 </p>
                 <h2>何が問題なのか？ h2</h2>
-                <figure class="wp-block-image">
-                  <img src="/img/common/mv02.jpeg" alt="">
-                </figure>
                 <ul>
                   <li>
                     HTML / CSS
@@ -112,7 +91,20 @@
                   学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
                   尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
                 </p>
-              
+
+                <div class="p-single__sns">
+                  <span class="u-hidden">SNSでシェアする</span>
+                  <a href="" class="p-single__sns-link">
+                    <svg class="c-svg p-single__sns-svg" width="28" height="28" aria-label="Twitterのアイコン">
+                      <use xlink:href="/img/svg/sprite.min.svg#icon-twitter" />
+                    </svg>
+                  </a>
+                  <a href="" class="p-single__sns-link">
+                    <svg class="c-svg p-single__sns-svg" width="28" height="28" aria-label="Facebookのアイコン">
+                      <use xlink:href="/img/svg/sprite.min.svg#icon-facebook" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           </main>
@@ -196,6 +188,7 @@
                 </div>
               </a>
             </article>
+            
           </div>
         </div>
       </div>

@@ -74,13 +74,14 @@
 
 .p-single__contents {
   margin-top: 1.5em;
+
   h1,
   h2,
   h3 {
     font-weight: 600;
   }
 
-  h1 {
+  h2 {
     margin-top: 84px;
     margin-bottom: 18px;
     @include global.fz(24, 28);
@@ -89,14 +90,14 @@
     border-bottom: 2px solid global.$color-secondary;
   }
 
-  h2 {
+  h3 {
     margin-top: 60px;
     margin-bottom: 12px;
     @include global.fz(20, 24);
     @include global.lh(1.5);
   }
 
-  h3 {
+  h4 {
     margin-top: 40px;
     margin-bottom: 10px;
     @include global.fz(18, 20);
@@ -123,7 +124,7 @@
     }
   }
 
-  ul {
+  ul,ol {
     margin: 1.4em 0;
     padding-left: 18px;
 
@@ -155,28 +156,30 @@
     margin-top: 32px;
   }
 
-  //目次
-  .toc {
-    position: relative;
-    border-radius: 7px;
-    margin-top: 32px;
-    padding: 20px 16px;
-    background: global.$color-secondary;
+  .p-single__sns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 52px;
   }
-  .toc-title {
-    @include global.fz(20, 24);
-    @include global.lh(1.44);
-    font-weight: 600;
-  }
-  .toc-toggle {
-    position: absolute;
-    right: 12px;
-  }
-  .toc-list {
-    li {
-      a {
-        color: global.$color-primary;
-      }
+
+  .p-single__sns-link {
+    color: global.$color-primary-thin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:not(:first-child) {
+      margin-left: 18px;
     }
+
+    &:hover {
+      text-decoration: none;
+      color: global.$color-primary;
+    }
+  }
+
+  .p-single__sns-svg {
+    display: inline-block;
   }
 }

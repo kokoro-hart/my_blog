@@ -1,0 +1,30 @@
+@use "foundation/global";
+
+// Project 目次
+//-------------------------------------------------------------------------
+
+//目次
+.p-toc {
+  border-radius: 7px;
+  margin-top: 32px;
+  padding: 20px 16px;
+  background: global.$color-secondary;
+
+  @include global.mq(md) {
+    padding: 24px 24px;
+  }
+}
+
+.p-toc__title {
+  @include global.fz(20, 24);
+  @include global.lh(1.44);
+  font-weight: 600;
+}
+
+.p-toc__list {
+  li {
+    a {
+      color: global.$color-primary;
+    }
+  }
+}
