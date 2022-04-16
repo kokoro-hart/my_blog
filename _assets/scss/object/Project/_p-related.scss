@@ -16,7 +16,6 @@
 
 .p-related__cards {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 32px;
 }
@@ -25,7 +24,17 @@
   width: calc(50% - 3% / 2);
   margin-bottom: 3%;
 
-  @include global.mq(md) {
+  &:not(:first-child) {
+    margin-left: 3%;
+  }
+
+  @include global.mq(lg, max) {
+    &:nth-child(2n + 1) {
+      margin-left: 0;
+    }
+  }
+
+  @include global.mq(lg) {
     margin-bottom: 0;
     width: calc(25% - 3% * 3 / 4);
   }
