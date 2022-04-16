@@ -36,15 +36,15 @@
 
 .p-sidebar__item {
   &:not(:first-child) {
-    margin-top: 10px; 
+    margin-top: 7px; 
   }
 }
 
 .p-sidebar__link {
   display: block;
   color: global.$color-primary-thin;
-  @include global.fz(14);
-  @include global.lh(1.44);
+  @include global.fz(14.45);
+  @include global.lh(1.77);
   font-weight: 600;
 
   &:hover,

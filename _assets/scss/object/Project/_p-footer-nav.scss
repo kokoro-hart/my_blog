@@ -20,7 +20,7 @@
 .p-footer-nav__link {
   display: block;
   color: global.$color-primary;
-  @include global.fz(14);
+  @include global.fz(14.45, 16);
   @include global.lh(1.44);
   font-weight: 600;
 }
