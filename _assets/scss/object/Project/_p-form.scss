@@ -37,7 +37,7 @@
 
 .p-form__label {
   position: relative;
-  @include global.fz(16);
+  @include global.fz(16, 18);
   @include global.lh(1.4);
   font-weight: 600;
 

@@ -4,7 +4,7 @@
 //-------------------------------------------------------------------------
 .p-single__inner {
   border-radius: 10px;
-  box-shadow: global.$box-shadow;
+  box-shadow: global.$box-shadow-thin;
   background-color: global.$color-base-thin;
   padding: 20px 16px 40px;
 
@@ -14,7 +14,7 @@
 }
 
 .p-single__date {
-  @include global.fz(14.45);
+  @include global.fz(14, 14.45);
   @include global.lh(1.2);
   color: global.$color-primary-thin;
   font-weight: 600;
@@ -26,7 +26,7 @@
 
 .p-single__heading {
   margin-top: 4px;
-  @include global.fz(24, 28);
+  @include global.fz(20, 28);
   @include global.lh(1.44);
   font-weight: 600;
 }
@@ -34,7 +34,7 @@
 .p-single__category {
   display: inline-block;
   border-radius: 10px;
-  margin-top: 4px;
+  margin-top: 10px;
   padding: 3px 6px;
   color: global.$color-base-fix;
   background-color: global.$color-accent;
@@ -86,32 +86,25 @@
   }
 
   h2 {
-    margin-top: 84px;
-    margin-bottom: 18px;
-    @include global.fz(24, 28);
-    @include global.lh(1.5);
-    padding-bottom: 5px;
     border-bottom: 2px solid global.$color-secondary;
+    margin-top: 84px;
+    padding-bottom: 5px;
+    margin-bottom: 18px;
+    @include global.fz(20, 28);
+    @include global.lh(1.5);
   }
 
   h3 {
     margin-top: 60px;
     margin-bottom: 12px;
-    @include global.fz(20, 24);
-    @include global.lh(1.5);
-  }
-
-  h4 {
-    margin-top: 40px;
-    margin-bottom: 10px;
-    @include global.fz(18, 20);
+    @include global.fz(18, 24);
     @include global.lh(1.5);
   }
 
   p {
     margin-top: 0.3em;
     @include global.fz(14.45, 16);
-    @include global.lh(1.77);
+    @include global.lh(1.8, 1.77);
     letter-spacing: 0.1em;
   }
 
@@ -129,7 +122,7 @@
   }
 
   ul,ol {
-    margin: 1.4em 0;
+    margin: 24px 0;
     padding-left: 18px;
 
     li {
@@ -154,8 +147,23 @@
     }
   }
 
+  .wp-block-quote {
+    border-left: 3px solid global.$color-primary-thin;
+    margin: 24px 0;
+    padding: 2px 0 2px 0.7em;
+    color: global.$color-primary-thin;
+
+    p {
+      font-size: .97em;
+    }
+  }
+
+  .wp-block-embed {
+    margin: 24px 0;
+  }
+
   .wp-block-image {
-    margin-top: 32px;
+    margin: 32px auto;
   }
 
   .p-single__sns {

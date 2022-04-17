@@ -5,7 +5,7 @@
 
 .p-sidebar {
   border-radius: 10px;
-  box-shadow: global.$box-shadow;
+  box-shadow: global.$box-shadow-thin;
   background-color: global.$color-base-thin;
   margin-top: 84px;
   padding: 40px 20px;
@@ -43,7 +43,7 @@
 .p-sidebar__link {
   display: block;
   color: global.$color-primary-thin;
-  @include global.fz(14.45);
+  @include global.fz(14, 14.45);
   @include global.lh(1.77);
   font-weight: 600;
 

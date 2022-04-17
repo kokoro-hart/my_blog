@@ -37,7 +37,7 @@
 
 .p-profile__text {
   margin-top: 14px;
-  @include global.fz(14.45);
+  @include global.fz(14, 14.45);
   @include global.lh(1.71);
 }
 

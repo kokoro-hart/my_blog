@@ -24,7 +24,7 @@
 
 .p-archive__heading {
   @include global.fz(24, 28);
-  @include global.lh(1);
+  @include global.lh(1.44);
   font-weight: 600;
 }
 
@@ -48,8 +48,12 @@
 }
 
 .p-archive__card {
-  width: calc(50% - 3% / 2);
+  width: 100%;
   margin-bottom: 32px;
+
+  @include global.mq(xs) {
+    width: calc(50% - 3% / 2);
+  }
 
   @include global.mq(sm) {
     width: calc(50% - 3% / 2);

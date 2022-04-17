@@ -21,7 +21,7 @@
   display: block;
   padding: 8px 0;
   color: global.$color-primary-thin;
-  @include global.fz(16, 18);
+  @include global.fz(14.45, 16);
   @include global.lh(1.2, 1.4);
   font-weight: 600;
 
