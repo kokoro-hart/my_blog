@@ -6,7 +6,7 @@
 .p-profile__head {
   display: grid;
   grid-template-columns: 140px 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 140px 1fr;
   margin-top: 18px;
 
   @include global.mq(sm) {
@@ -20,7 +20,7 @@
 
   @include global.mq(991px, min) {
     grid-template-columns: 110px 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: 110px 1fr;
   }
 }
 
