@@ -5,8 +5,8 @@
 //ライトテーマ時のカラー
 :root {
   --color-base: #f1f5f9;
-  --color-base-thin: #fff;
-  --color-primary: #000000;
+  --color-base-thin: #fefefe;
+  --color-primary: #000000d1;
   --color-primary-thin: #6e7b85;
   --color-secondary: #eee;
   --color-gray-thin: #5c93bb2b;
@@ -16,7 +16,7 @@
 [data-mode="dark"] {
   --color-base: #21242d;
   --color-base-thin: #313746;
-  --color-primary: #fff;
+  --color-primary: #fefefe;
   --color-primary-thin: #989BA3;
   --color-secondary: #4B505E;
   --color-gray-thin: transparent;
