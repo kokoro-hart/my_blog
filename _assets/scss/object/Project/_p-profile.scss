@@ -4,27 +4,56 @@
 //--------------------------------------------------------------------------
 
 .p-profile__head {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  grid-template-rows: repeat(2, 1fr);
   margin-top: 18px;
+
+  @include global.mq(sm) {
+    grid-template-columns: 140px 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
 
   @include global.mq(md) {
     margin-top: 24px;
   }
+
+  @include global.mq(991px, min) {
+    grid-template-columns: 110px 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
 }
 
 .p-profile__img {
-  border: 1px solid global.$color-accent;
+  grid-area: 1 / 1 / 2 / 2;
+  border: 1px solid global.$color-secondary-thin;
   border-radius: 50%;
-  max-width: 110px;
+  max-width: 140px;
   width: 100%;
 
+  @include global.mq(sm) {
+    grid-area: 1 / 1 / 3 / 2;
+  }
+
+  @include global.mq(991px, min) {
+    grid-area: 1 / 1 / 2 / 2;
+    max-width: 110px;
+  }
 }
 
 .p-profile__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-area: 1 / 2 / 2 / 3;
   margin-left: 24px;
 
-  @include global.mq(lg) {
+  @include global.mq(sm) {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+
+  @include global.mq(991px, min) {
+    grid-area: 1 / 2 / 2 / 3;
     margin-left: 12px;
   }
 }
@@ -36,9 +65,20 @@
 }
 
 .p-profile__text {
+  grid-area: 2 / 1 / 3 / 3;
   margin-top: 14px;
   @include global.fz(14, 14.45);
   @include global.lh(1.71);
+
+  @include global.mq(sm) {
+    grid-area: 2 / 2 / 3 / 3;
+    margin-left: 24px;
+  }
+
+  @include global.mq(991px, min) {
+    grid-area: 2 / 1 / 3 / 3;
+    margin-left: 0;
+  }
 }
 
 .p-profile__list {
