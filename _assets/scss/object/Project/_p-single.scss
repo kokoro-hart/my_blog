@@ -163,7 +163,12 @@
   }
 
   .wp-block-image {
-    margin: 32px auto;
+    width: 100%;
+    margin: 32px 0;
+
+    @include global.mq(md) {
+      width: 70%;
+    }
   }
 
   .p-single__sns {
