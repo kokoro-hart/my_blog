@@ -9,6 +9,7 @@
   --color-primary: #000000d1;
   --color-primary-thin: #6e7b85;
   --color-secondary: #eee;
+  --color-secondary-thin: #D5D6D8;
   --color-gray-thin: #5c93bb2b;
 }
 
@@ -19,6 +20,7 @@
   --color-primary: #fefefe;
   --color-primary-thin: #989BA3;
   --color-secondary: #4B505E;
+  --color-secondary-thin: #313746;
   --color-gray-thin: transparent;
 }
 
@@ -28,6 +30,7 @@ $color-base-thin: var(--color-base-thin);
 $color-primary: var(--color-primary);
 $color-primary-thin: var(--color-primary-thin);
 $color-secondary: var(--color-secondary);
+$color-secondary-thin:var(--color-secondary-thin);
 $color-gray-thin: var(--color-gray-thin);
 
 //テーマ切り替えでも変わらない色
