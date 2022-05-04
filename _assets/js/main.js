@@ -10,6 +10,6 @@ import '@modules/svgxuse';
 import './lib/prism';
 
 //ダークテーマ切り替え
-import './modules/dark-theme.js';
+import './modules/theme.js';
 
 import './common'
