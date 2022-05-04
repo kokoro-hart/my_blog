@@ -40,9 +40,7 @@
               </a>
             <?php endif; ?>
           </h1>
-          <button class="p-header__switch-button c-button-switch" aria-label="カラーテーマ切り替え">
-            <input class="c-button-switch__input" id="js-switch-button" type="checkbox">
-            <label class="c-button-switch__label" for="js-switch-button"></label>
+          <button class="p-header__switch-button c-button-switch" id="js-change-mode" data-theme="" aria-label="カラーテーマ切り替え">
           </button>
         </div>
         <p class="p-header__text">
