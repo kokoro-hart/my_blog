@@ -3,7 +3,7 @@
 // Component ダークテーマ切り替えボタン
 //--------------------------------------------------------------------------
 
-.c-button-switch__label {
+.c-button-switch {
   position: relative;
   display: flex;
   overflow: hidden;
@@ -49,29 +49,27 @@
     }
   }
 }
+.c-button-switch:active {
+  &::after {
+    width: 25px;
 
-.c-button-switch__label:active::after {
-  width: 30px;
-
-  @include global.mq(md) {
-    width: 50px;
+    @include global.mq(md) {
+      width: 40px;
+    }
   }
 }
 
-.c-button-switch__input {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
+[data-theme="dark"] {
+  &.c-button-switch::before {
+    content: "Dark";
+    left: 15px;
+    right: auto;
+  }
 }
 
-.c-button-switch__input:checked + .c-button-switch__label::after {
-  left: calc(100% - 5px);
-  transform: translateX(-100%);
-}
-
-.c-button-switch__input:checked + .c-button-switch__label::before {
-  content: "Dark";
-  left: 15px;
-  right: auto;
+[data-theme="dark"] {
+  &.c-button-switch::after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+  }
 }
