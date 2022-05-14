@@ -1,0 +1,60 @@
+@use "foundation/global";
+
+// Project サイドバーの目次
+//-------------------------------------------------------------------------
+
+.p-toc-sidebar {
+  padding-top: 32px;
+}
+
+.p-toc-sidebar__inner {
+  border-radius: 10px;
+  box-shadow: global.$box-shadow-thin;
+  background-color: global.$color-base-thin;
+  overflow: scroll;
+  height: 100%;
+  padding: 40px 20px;
+}
+
+.p-toc-sidebar__title {
+  @include global.fz(16, 18);
+  @include global.lh(1.2);
+  font-weight: 600;
+}
+
+.p-toc-sidebar__body {
+  margin-top: 18px;
+  ul {
+    li {
+      margin-left: -8px;
+      a {
+        display: block;
+        padding: 10px 8px;
+        border-radius: 3px;
+        color: global.$color-primary-thin;
+        font-weight: 600;
+        @include global.fz(14.45);
+        @include global.lh(1.4);
+
+        &:hover,
+        &:focus {
+          outline: none;
+          background-color: global.$color-secondary;
+          color: global.$color-primary;
+        }
+      }
+      ul {
+        margin-top: 0;
+        padding-left: 16px;
+
+        li {
+          margin-left: 0;
+
+          a {
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+}

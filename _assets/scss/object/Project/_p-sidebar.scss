@@ -4,15 +4,18 @@
 //--------------------------------------------------------------------------
 
 .p-sidebar {
-  border-radius: 10px;
-  box-shadow: global.$box-shadow-thin;
-  background-color: global.$color-base-thin;
   margin-top: 84px;
-  padding: 40px 20px;
-
+  
   @include global.mq(lg) {
     margin-top: 0;
   }
+}
+
+.p-sidebar__inner {
+  border-radius: 10px;
+  box-shadow: global.$box-shadow-thin;
+  background-color: global.$color-base-thin;
+  padding: 40px 20px;
 }
 
 .p-sidebar__sticky {

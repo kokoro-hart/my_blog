@@ -21,10 +21,19 @@
   font-weight: 600;
 }
 
-.p-toc__list {
+.p-toc__body {
   li {
     a {
       color: global.$color-primary;
+      font-weight: 600;
+    }
+
+    ul {
+      li {
+        a {
+          font-weight: 400;
+        }
+      }
     }
   }
 }
