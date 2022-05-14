@@ -6,6 +6,10 @@
 .c-pagination {
   display: flex;
   justify-content: center;
+
+  @include global.mq(lg) {
+    justify-content: start;
+  }
 }
 
 .page-numbers {
