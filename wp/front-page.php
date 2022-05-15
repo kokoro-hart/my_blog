@@ -1,8 +1,9 @@
 
 <?php get_header(); ?>
 
-<div class="p-archive">
-  <div class="p-archive__inner l-container">
+<div class="l-content" data-barba="container" data-barba-namespace="home">
+  <?php get_template_part('./modules/global-nav') ?>
+  <div class="p-archive l-container">
     <main id="main" class="p-archive__main">
       <h2 class="p-archive__heading">
         すべての記事

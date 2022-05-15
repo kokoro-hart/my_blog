@@ -1,8 +1,9 @@
 
 <?php get_header(); ?>
 
-<div class="p-archive">
-  <div class="p-archive__inner l-container">
+<div class="l-content" data-barba="container" data-barba-namespace="single">
+  <?php get_template_part('./modules/global-nav') ?>
+  <div class="p-archive l-container">
     <main id="main" class="p-archive__main">
       <?php $category = get_the_category(); ?>
       <h2 class="p-archive__heading">
