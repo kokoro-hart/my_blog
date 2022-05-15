@@ -3,6 +3,12 @@
 // Project グローバルナビゲーション
 //--------------------------------------------------------------------------
 
+.p-global-nav {
+  padding-top: 32px;
+  background-color: global.$color-base-thin;
+  border-bottom: 1px solid global.$color-gray-thin;
+}
+
 .p-global-nav__list {
   display: flex;
 }

@@ -1,9 +1,10 @@
 @use "foundation/global";
 
-// Layout ヘッダー
+// Layout メインコンテンツ
 //--------------------------------------------------------------------------
 
-.l-header {
+.l-content {
+  z-index: map-get(global.$layer, main);
   width: 100%;
-  z-index: map-get(global.$layer, header);
+  flex: 1;
 }

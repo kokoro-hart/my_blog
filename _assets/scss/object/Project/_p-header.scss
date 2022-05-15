@@ -6,7 +6,6 @@
 .p-header {
   padding-top: 24px;
   background-color: global.$color-base-thin;
-  border-bottom: 1px solid global.$color-gray-thin;
 
   @include global.mq(md) {
     padding-top: 32px;
@@ -37,12 +36,4 @@
   @include global.lh(1);
   font-weight: 600;
   color: global.$color-primary;
-}
-
-.p-header__foot {
-  margin-top: 32px;
-
-  @include global.mq(md) {
-    margin-top: 40px;
-  }
 }

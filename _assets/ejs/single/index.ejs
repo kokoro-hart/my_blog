@@ -3,8 +3,9 @@
   <%- include('../common/_header', {pageId:pageId }) %>
 
     <% console.log(jsonData) %>
-      <div class="p-archive">
-        <div class="p-archive__inner l-container">
+      <div class="l-content"  data-barba="container" data-barba-namespace="single">
+        <%- include('../common/_global-nav', {pageId:pageId }) %>
+        <div class="p-archive l-container">
           <main id="main" class="p-archive__main p-single">
             <div class="p-single__inner">
               <div class="p-single__head">
@@ -24,78 +25,1302 @@
               <div class="p-single__thumbnail">
                 <img src="/img/common/img-vue.jpeg" alt="" class="p-single__img">
               </div>
-              <div class="p-single__contents">
+              <article class="p-single__contents">
+              
                 <div class="p-toc">
-                  <h3 class="p-toc__title">
-                    目次
-                  </h3>
-                  <ul class="p-toc__list">
-                    <li>
-                      <a href="#toc-1">
-                        クリッカブルな要素をdivやspanで作らない h2
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#toc-2">
-                        リンクやボタン、フォームのinput要素のoutlineを消さない h2
-                      </a>
-                    </li>
-                    <li>
-                      <a href="">
-                        どう実装したら良いか？ h2
-                      </a>
-                    </li>
-                  </ul>
+                  <div class="p-toc__title-wrapper">
+                    <h2 class="p-toc__title">目次</h2>
+                  </div>
+                  <nav class="p-toc__body">
+                    <ul>
+                      <li><a href="#chapter-1">はじめに</a></li>
+                      <li><a href="#chapter-2">非同期処理と同期処理</a>
+                        <ul>
+                          <li><a href="#chapter-3">同期処理のイメージ</a></li>
+                          <li><a href="#chapter-4">非同期処理のイメージ</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#chapter-5">非同期処理の実装方法</a></li>
+                      <li><a href="#chapter-6">Promiseの基本理解</a>
+                        <ul>
+                          <li><a href="#chapter-7">Promise の状態</a></li>
+                          <li><a href="#chapter-8">基本構文</a></li>
+                          <li><a href="#chapter-9">resolve</a></li>
+                          <li><a href="#chapter-10">reject</a></li>
+                          <li><a href="#chapter-11">実際に同期処理と非同期処理を走らせてみる</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#chapter-12">new Promiseの糖衣構文</a>
+                        <ul>
+                          <li><a href="#chapter-13">Promise.resolve</a></li>
+                          <li><a href="#chapter-14">Promise.reject</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#chapter-15">Promiseチェーン</a></li>
+                      <li><a href="#chapter-16">Promiseの並列処理</a>
+                        <ul>
+                          <li><a href="#chapter-17">Promise.all</a></li>
+                          <li><a href="#chapter-18">Promise.race</a></li>
+                          <li><a href="#chapter-19">Promise.allSettled</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#chapter-20">制御予測の基本を学ぶ</a>
+                        <ul>
+                          <li><a href="#chapter-21">Event Loop(イベントループ)の基本理解</a></li>
+                          <li><a href="#chapter-22">用語の整理</a></li>
+                          <li><a href="#chapter-23">Macrotask(マクロタスク)とMicrotask(マイクロタスク)の違い</a></li>
+                          <li><a href="#chapter-24">マイクロタスクはマクロタスクより先に処理される</a></li>
+                          <li><a href="#chapter-25">マイクロタスクの実行中にマクロタスクを追加してみる</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#chapter-26">async / await</a>
+                        <ul>
+                          <li><a href="#chapter-27">async function</a></li>
+                          <li><a href="#chapter-28">await</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#chapter-29">Promiseチェーンをasync / awaitで書き換える</a>
+                        <ul>
+                          <li><a href="#chapter-30">逐次処理の書き換え</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#chapter-31">さいごに</a></li>
+                      <li><a href="#chapter-32">参考文献</a></li>
+                    </ul>
+                  </nav>
                 </div>
-                <h2 id="toc-1">クリッカブルな要素をdivやspanで作らない h2</h2>
+                <h2 id="chapter-1" class="js-heading">はじめに</h2>
+              
+              
+              
+                <p>現在、JavaScriptの非同期処理についてについて学んでおり一旦の頭の整理を兼ねて記事にしたいと思います。</p>
+              
+              
+              
+                <h2 id="chapter-2" class="js-heading">非同期処理と同期処理</h2>
+              
+              
+              
+                <p><strong>同期処理は、コードを上から順次処理（実行）されていきます。</strong></p>
+              
+              
+              
+                <p>対して、</p>
+              
+              
+              
+                <p><strong>非同期処理とは、ある処理が終了するのを待たずに、別の処理を実行することです。</strong></p>
+              
+              
+              
                 <p>
-                  KT MEDIAは、Web制作周りやEC関連の<a href="">リンクが入ります</a>記事を定期的に更新している技術ブログです。
-                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
-                  <code>.test-class</code>
+                  そして、JavaScriptは基本的に<strong>シングルスレッドの実装しかできない</strong>ため、2つ以上の処理を並行して実行することはできません。<br>※ServiceWorkerというものを利用することで、バックグラウンド実行は可能になるそうですが、今回は割愛します。
                 </p>
-                <h2 id="toc-2">どう実装したら良いか？ h2</h2>
+              
+              
+              
+                <h3 id="chapter-3" class="js-heading">同期処理のイメージ</h3>
+              
+              
+              
+                <p>同期処理ではこのように順次処理を実行することになります。</p>
+              
+              
+              
+                
+              
+              
+              
+                <p>この場合、<br>処理1 -&gt; 処理2 -&gt; 処理3
+                  という実行順序になるため<br>処理2が実行されるまで処理3は実行されません。<br>仮に、処理2がDBから値を取得する等、通信状況によって取得まで時間がかかったり値が返ってくる保証がない処理だった場合、DBから値を取得し終わるまで、待ち時間が発生してしまいます。
+                </p>
+              
+              
+              
+                <h3 id="chapter-4" class="js-heading">非同期処理のイメージ</h3>
+              
+              
+              
+                <p>非同期処理を実装すると、その処理はメインスレッドから一時的に切り離されて次の処理に譲るイメージになります。</p>
+              
+              
+              
+                
+              
+              
+              
+                <p>処理2を非同期処理として実装した場合、メインスレッドから一時的に切り離し処理3の実行を待ってから再びメインスレッドに戻り実行されることになります。</p>
+              
+              
+              
+                <p>ですので、この場合は<br>処理1 -&gt; 処理3 -&gt; 処理2 という実行順序になります</p>
+              
+              
+              
                 <p>
-                  KT MEDIAは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
-                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+                  このようにシングルスレッドでは、何らかの非同期処理がきた場合は、その<strong>処理の完了を待たず</strong>に、次のタスクを実行する必要があるため、JavaScriptで非同期処理は「処理の完了を待たない」という性質を持っています。
                 </p>
-                <p>
-                  KT MEDIAは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
-                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
-                </p>
-                <h2>リンクやボタン、フォームのinput要素のoutlineを消さない h2</h2>
-                <p>
-                  KT MEDIAは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
-                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
-                </p>
-                <h2>何が問題なのか？ h2</h2>
+              
+              
+              
+                <h2 id="chapter-5" class="js-heading">非同期処理の実装方法</h2>
+              
+              
+              
+                <p>現在、主に使われている非同期処理の実装方法として</p>
+              
+              
+              
                 <ul>
-                  <li>
-                    HTML / CSS
+                  <li>ES2015で追加された<code>Promise</code></li>
+                  <li>ES2017で追加された<code>async / await</code></li>
+                </ul>
+              
+              
+              
+                <p>があります。<br>今回は、この2つを利用した非同期処理の実装について自身の頭の整理も兼ねて書いていきたいと思います。</p>
+              
+              
+              
+                <h2 id="chapter-6" class="js-heading">Promiseの基本理解</h2>
+              
+              
+              
+                <p>Promiseは、非同期処理を行うためのもので、<br>「非同期処理の結果を表現するビルトインオブジェクト」とも呼ばれています。</p>
+              
+              
+              
+                <h3 id="chapter-7" class="js-heading">Promise の状態</h3>
+              
+              
+              
+                <p>まず<code>Promise</code>&nbsp;は以下の3つの状態のいずれかに定義されます。</p>
+              
+              
+              
+                <ul>
+                  <li>待機 (<em>pending</em>): 実行中の状態（成功も失敗もしていない)を意味する</li>
+                  <li>履行 (<em>fulfilled</em>): 処理の成功（正常終了）を意味する</li>
+                  <li>拒否 (<em>rejected</em>): 処理の失敗（異常終了）を意味する</li>
+                </ul>
+              
+              
+              
+                <p>以下Promiseの状態について<a href="https://jsprimer.net/basic/async/#promise-status" target="_blank"
+                    rel="noreferrer noopener">JavaScript Primer</a>から引用</p>
+              
+              
+              
+                <blockquote class="wp-block-quote">
+                  <p>
+                    <code>Promise</code>インスタンスの状態は作成時に<strong>Pending</strong>となり、一度でも<strong>Fulfilled</strong>または<strong>Rejected</strong>へ変化すると、それ以降状態は変化しなくなります。
+                    そのため、<strong>Fulfilled</strong>または<strong>Rejected</strong>の状態であることを<strong>Settled</strong>（不変）と呼びます。</p>
+                  <cite>jsPrimer</cite>
+                </blockquote>
+              
+              
+              
+                <h3 id="chapter-8" class="js-heading">基本構文</h3>
+              
+              
+              
+                <p>
+                  Promiseインスタンスを生成する際は引数にコールバック関数として<code>resolve</code>と<code>reject</code>を設定します。<br>Promiseインスタンス内は基本的には同期処理で実行され、then()
+                  catch() finally()の内部は非同期処理として実行されます。</p>
+              
+              
+              
+                <ul>
+                  <li><code>resolve()</code>の実行で非同期関数が正常終了したことを知らせ、thenメソッド内部が実行される。</li>
+                  <li><code>reject()</code>実行で、非同期関数が異常終了したことを知らせ、catchメソッド内部が実行される。</li>
+                  <li>thenまたはcatchメソッドが実行されたら共通の終了処理としてfinallyメソッドが実行されます。</li>
+                </ul>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 同期処理</span>
+               <span class="token comment">// resolve() or reject()</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token comment">// 非同期処理 (resolveの実行を待つ)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token comment">// 非同期処理 (rejectの実行を待つ)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token comment">// 非同期処理 (then, またはcatchを待つ)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <h3 id="chapter-9" class="js-heading">resolve</h3>
+              
+              
+              
+                <p>
+                  resolveが実行されるとthenメソッド内部が実行され、<br>thenメソッド内部のコールバック関数には、resolve実行時の実引数が渡されます。<br>そして、thenメソッド実行後はcatchメソッドを飛ばしてfinallyが実行されます。
+                </p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'thenメソッド内の処理'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                promise
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// =&gt; thenメソッド内の処理</span>
+                <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'終了処理'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// =&gt; 終了処理</span>
+              
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>promise<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                
+              
+              
+              
+                <p>このようにPromiseの状態も<em>fulfilled</em>（正常終了）と出力されます。</p>
+              
+              
+              
+                <h3 id="chapter-10" class="js-heading">reject</h3>
+              
+              
+              
+                <p>
+                  rejectが実行されるとthenメソッドは実行されず、catchメソッド内部が実行され、<br>catchメソッド内部のコールバック関数には、reject実行時の実引数が渡されます。<br>そして、最後にfinallyメソッドが実行されます。
+                </p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> promise <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token function">reject</span><span class="token punctuation">(</span><span class="token string">'catchメソッド内の処理'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                promise
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// =&gt; catchメソッド内の処理</span>
+                <span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'終了処理'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">// =&gt; 終了処理</span>
+              
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>promise<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                
+              
+              
+              
+                <p>rejectの実行でcatchメソッドが呼ばれた場合Promiseの状態は<em><em>rejected</em></em>（異常終了）と出力されます。</p>
+              
+              
+              
+                <h3 id="chapter-11" class="js-heading">実際に同期処理と非同期処理を走らせてみる</h3>
+              
+              
+              
+                <p>以下の状態でコンソールの出力順序を比べてみます。</p>
+              
+              
+              
+                <ul>
+                  <li>グローバルコンテキスト内</li>
+                  <li>Promiseインスタンス内</li>
+                  <li>thenメソッド内</li>
+                </ul>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'global1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              
+              <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'promise'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'then'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span>
+              
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'global2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-json" tabindex="0"><code class="language-json">global1
+              promise
+              global2
+              then
+              </code></pre>
+              
+              
+              
+                <p>このようにグローバルコンテキスト内とPromiseインスタンス内ではconsole.logが上から順番に出力され、thenメソッド内のconsole.logは一番最後に出力されました。</p>
+              
+              
+              
+                <p>このことから、<br>グローバルコンテキスト内とPromiseインスタンス内部は同期処理が行われ、<br>thenメソッド内部の処理は非同期処理であることがわかります。</p>
+              
+              
+              
+                <h2 id="chapter-12" class="js-heading">new Promiseの糖衣構文</h2>
+              
+              
+              
+                <h3 id="chapter-13" class="js-heading">Promise.resolve</h3>
+              
+              
+              
+                <p>
+                  <code>Promise.resolve</code>メソッドは、new演算子を使用せずにPromiseとresolveをメソッドチェーンでつなぐことで<strong>Fulfilled</strong>の状態となった<code>Promise</code>インスタンスを生成することができます。
+                </p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token comment">// const promise = new Promise(resolve =&gt; {</span>
+              <span class="token comment">//   resolve();</span>
+              <span class="token comment">// });</span>
+              
+              <span class="token comment">// 上記処理の糖衣構文（シンタックスシュガー）</span>
+              <span class="token keyword">const</span> promise <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>resolveの実引数はthenメソッド内のコールバック関数の引数に渡ります。</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> promise <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              promise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// =&gt; 1</span>
+              </code></pre>
+              
+              
+              
+                <h3 id="chapter-14" class="js-heading">Promise.reject</h3>
+              
+              
+              
+                <p>
+                  <code>Promise.reject</code>メソッドは、new演算子を使用せずにPromiseとrejectをメソッドチェーンでつなぐことで<strong><strong>Rejected</strong></strong>の状態となった<code>Promise</code>インスタンスを生成することができます。
+                </p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token comment">// const promise = new Promise((resolve, reject) =&gt; {</span>
+              <span class="token comment">//  reject();</span>
+              <span class="token comment">// });</span>
+              
+              <span class="token comment">// 上記処理の糖衣構文（シンタックスシュガー）</span>
+              <span class="token keyword">const</span> promise <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>rejectの実引数はcatchメソッド内のコールバック関数の引数に渡ります。</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> promise <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              promise<span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// =&gt; 1</span>
+              </code></pre>
+              
+              
+              
+                <h2 id="chapter-15" class="js-heading">Promiseチェーン</h2>
+              
+              
+              
+                <p>Promiseのチェーンとは、Promiseを使って、非同期処理を順次実行することです。Promiseでチェーンをつなげるには、thenメソッドのコールバック関数に戻り値としてPromiseのインスタンスを渡す必要があります。
+                </p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sleep</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    val<span class="token operator">++</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">秒経ちました。</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>もしくはこのようにつなげることもできます。</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>sleep<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>sleep<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>sleep<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>sleep<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                <figure class="wp-block-image size-full"><img loading="lazy" width="588" height="188"
+                    src="http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-21.29.53.png" alt="" class="wp-image-503"
+                    srcset="http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-21.29.53.png 588w, http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-21.29.53-300x96.png 300w"
+                    sizes="(max-width: 588px) 100vw, 588px"></figure>
+              
+              
+              
+                <p>
+                  <strong>Promise内のresolveメソッドが実行されるまで、then()の中身は実行されない</strong>という特徴を利用して、PromiseのコールバックにsetTimeout（非同期関数）を定義することで1秒経つ毎に順次thenを実行することができます。
+                </p>
+              
+              
+              
+                <p>注意点として、thenメソッド内のコールバック関数の戻り値にPromiseインスタンスを返さない場合、後続の処理が待たずに実行されてしまうのでチェーンが切れてしまうので必ずPromiseインスタンスを返します。</p>
+              
+              
+              
+                <p>もう一つ、例としてダミーのユーザーリソースをPromiseチェーンを使って順番に配列に格納し、結果としてconsoleに出力してみます。</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'同期処理1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              
+              <span class="token keyword">const</span> <span class="token function-variable function">usersFetch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                      <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Response body of </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>path<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                      <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"ユーザーデータが見つかりません"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token comment">//resultにデータを格納する</span>
+              <span class="token keyword">const</span> results <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+              
+              <span class="token comment">// users Taroを取得する</span>
+              <span class="token function">usersFetch</span><span class="token punctuation">(</span><span class="token string">"/users/Taro"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token comment">// users Taroをresultの末尾に追加</span>
+                  results<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token comment">// users Bobを取得する</span>
+                  <span class="token keyword">return</span> <span class="token function">usersFetch</span><span class="token punctuation">(</span><span class="token string">"/users/Bob"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token comment">// users Bobをresultの末尾に追加</span>
+                  results<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token comment">// 結果を出力</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>results<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'同期処理2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                <figure class="wp-block-image size-large"><img loading="lazy" width="1024" height="261"
+                    src="http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-21.39.52-1024x261.png" alt=""
+                    class="wp-image-506"
+                    srcset="http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-21.39.52-1024x261.png 1024w, http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-21.39.52-300x76.png 300w, http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-21.39.52-768x196.png 768w, http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-21.39.52.png 1044w"
+                    sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+              
+              
+              
+                <p>finallyメソッドよりも後のグローバルコンテキストに出力したconsole.logが先に出力されていることからユーザーリソースの出力が非同期であり、チェーンも切れていないことがわかります。</p>
+              
+              
+              
+                <h2 id="chapter-16" class="js-heading">Promiseの並列処理</h2>
+              
+              
+              
+                <p>Promiseには以下のような並列で処理するための静的メソッドが用意されています。</p>
+              
+              
+              
+                <ul>
+                  <li>Promise.all </li>
+                  <li>Promise.race </li>
+                  <li>Promise.allSettled</li>
+                </ul>
+              
+              
+              
+                <h3 id="chapter-17" class="js-heading">Promise.all</h3>
+              
+              
+              
+                <p>
+                  Promise.allは<strong>配列（反復可能オブジェクト）</strong>でPromiseのインスタンスを受け取り、<br>配列に格納したPromiseインスタンスが全て<strong>Fulfilled</strong>した後にthenメソッドが呼ばれます。thenメソッドのコールバック関数には結果をまとめた配列が渡されます。
+                </p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sleep</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> val <span class="token operator">*</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token keyword">const</span> promise <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+              <span class="token punctuation">]</span><span class="token punctuation">)</span>
+                
+              promise
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">の処理の後にthenが呼ばれました</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                <figure class="wp-block-image size-full"><img loading="lazy" width="702" height="190"
+                    src="http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-22.23.02.png" alt="" class="wp-image-512"
+                    srcset="http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-22.23.02.png 702w, http://myblog.local/wp-content/uploads/2022/05/スクリーンショット-2022-05-04-22.23.02-300x81.png 300w"
+                    sizes="(max-width: 702px) 100vw, 702px"></figure>
+              
+              
+              
+                <p>逆に、渡したPromiseがひとつでも<strong>Rejected</strong>となった場合は、その時点でcatchに処理が移行します。</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sleep</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span>reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">reject</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> val <span class="token operator">*</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token keyword">const</span> promise <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+              <span class="token punctuation">]</span><span class="token punctuation">)</span>
+                
+              promise
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">の処理でエラーになりました</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                
+              
+              
+              
+                <h3 id="chapter-18" class="js-heading">Promise.race</h3>
+              
+              
+              
+                <p>
+                  Promise.raceでは、配列で渡したPromiseのどれか一つが<strong>Fulfilled</strong>または<strong>Rejected</strong>になった時点でthen、またはcatchに処理を移行します。
+                </p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sleep</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> val <span class="token operator">*</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token keyword">const</span> promise <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">race</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+              <span class="token punctuation">]</span><span class="token punctuation">)</span>
+              
+              promise
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>data<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">の処理の後にthenが呼ばれました</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              </code></pre>
+              
+              
+              
+                <p>実行結果</p>
+              
+              
+              
+                
+              
+              
+              
+                <p>このように1でrejectが呼ばれた次の処理でthenメソッドに処理が移行していることがわかります。</p>
+              
+              
+              
+                <h3 id="chapter-19" class="js-heading">Promise.allSettled</h3>
+              
+              
+              
+                <p>Promise.allSettledは、配列に格納したPromiseインスタンスが全て<strong>Fulfilled</strong>になったらthenメソッドに処理を移行します。ここはPromise.allと同じです。
+                </p>
+              
+              
+              
+                <p>そして、Paomise.allとの違いはPromiseインスタンスのいずれかがrejectの場合でもPromiseインスタンスが全て<strong>Fulfilled</strong>した後にthenメソッドが呼ばれることです。
+                </p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sleep</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">reject</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> val <span class="token operator">*</span> <span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token keyword">const</span> promise <span class="token operator">=</span> Promise<span class="token punctuation">.</span><span class="token function">allSettled</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
+              <span class="token punctuation">]</span><span class="token punctuation">)</span>
+              
+              promise
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>実行結果</p>
+              
+              
+              
+                
+              
+              
+              
+                <p>このように、<code>reject</code>を返したとしても、全ての処理が完了した後に配列で<strong>rejected</strong>となったオブジェクトが出力されます。</p>
+              
+              
+              
+                <h2 id="chapter-20" class="js-heading">制御予測の基本を学ぶ</h2>
+              
+              
+              
+                <p>このセクションでは、僕自身が非同期処理を学んでいく中でどのような順序で処理が実行されていくのか知るために調べた内容を一旦の頭の整理としてまとめます。</p>
+              
+              
+              
+                <h3 id="chapter-21" class="js-heading">Event Loop(イベントループ)の基本理解</h3>
+              
+              
+              
+                <p>イベントループやコールスタック、非同期処理の基本的な流れは以下の文献が参考になりました。</p>
+              
+              
+              
+                <p><a href="https://www.udemy.com/course/javascript-essence/" target="_blank"
+                    rel="noreferrer noopener">【JS】ガチで学びたい人のためのJavaScriptメカニズム</a></p>
+              
+              
+              
+                <p><a href="https://coliss.com/articles/build-websites/operation/javascript/javascript-visualized-event-loop.html"
+                    target="_blank" rel="noreferrer noopener">JavaScript イベントループの仕組みをGIFアニメで分かりやすく解説 | コリス</a></p>
+              
+              
+              
+                <p><a rel="noreferrer noopener" href="https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif"
+                    target="_blank">&nbsp;JavaScript Visualized: Event Loop</a></p>
+              
+              
+              
+                <p>&nbsp;Philip Roberts 氏の講演動画「イベントループとは一体何ですか？ | Philip Roberts | JSConf EU」</p>
+              
+              
+              
+                <figure
+                  class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
+                  <div class="wp-block-embed__wrapper">
+                    <iframe loading="lazy" title="What the heck is the event loop anyway? | Philip Roberts | JSConf EU" width="500"
+                      height="281" src="https://www.youtube.com/embed/8aGhZQkoFbQ?start=1170&amp;feature=oembed" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen=""></iframe>
+                  </div>
+                </figure>
+              
+              
+              
+                <h3 id="chapter-22" class="js-heading">用語の整理</h3>
+              
+              
+              
+                <ul id="block-38910f7b-d694-4e89-a553-c05ae17d6d8a">
+                  <li><strong>Event Loop(イベントループ)</strong>
+                    <ul>
+                      <li>コールスタックとタスクキューの状態を常にを監視している</li>
+                    </ul>
                   </li>
-                  <li>
-                    Scss
+                  <li><strong>Web API（setTimeout, fetch など）</strong>
+                    <ul>
+                      <li>非同期に実行される非同期API</li>
+                    </ul>
                   </li>
-                  <li>
-                    JavaScript
+                  <li><strong>Heap(ヒープ)</strong>
+                    <ul>
+                      <li>動的に確保と解放を繰り返せるメモリ領域で、オブジェクトはヒープに割り当てられる</li>
+                    </ul>
                   </li>
-                  <li>
-                    JQuery
+                  <li><strong>Call Stack(コールスタック)</strong>
+                    <ul>
+                      <li>変数や関数などは呼び出されるとコールスタックに追加される</li>
+                    </ul>
+                    <ul>
+                      <li>後入れ先出し、LIFO(Last In First Out)の仕組み</li>
+                      <li>メインスレッドで実行される</li>
+                    </ul>
                   </li>
-                  <li>
-                    WordPress
+                  <li><strong>Macrotask(マクロタスク、タスクキュー)</strong>
+                    <ul>
+                      <li>実行待ちの非同期処理の待ち行列。(非同期処理の実行順序を管理している)</li>
+                      <li>先入れ先出し、FIFO(First In, First Out)の仕組み</li>
+                      <li>メインスレッドからは切り離されている</li>
+                      <li>例: setTimeout, setInterval, requestAnimationFrameなど</li>
+                    </ul>
+                  </li>
+                  <li><strong>Microtask(マイクロタスク、ジョブキュー)</strong>
+                    <ul>
+                      <li>タスクキューとは別で存在する非同期処理の待ち行列</li>
+                      <li>メインスレッドからは切り離されている</li>
+                      <li>例: Promise, queueMicrotask, MutationObserverなど</li>
+                    </ul>
                   </li>
                 </ul>
-                <h3>私について h3</h3>
+              
+              
+              
+                <h3 id="chapter-23" class="js-heading">Macrotask(マクロタスク)とMicrotask(マイクロタスク)の違い</h3>
+              
+              
+              
+                <p>MacrotaskとMicrotaskの違いには主に以下が挙げられます。</p>
+              
+              
+              
+                <ul>
+                  <li><strong>マイクロタスクはマクロタスクより先に処理される</strong></li>
+                  <li><strong>マイクロタスク</strong> =&gt; イベントループが回ってきたら格納されている<strong>全てのタスクをコールスタックに返す</strong></li>
+                  <li><strong>マクロタスク</strong> =&gt; イベントループが回ってきたら格納されている<strong>タスクを一つずつ<strong>コールスタックに返す</strong></strong></li>
+                </ul>
+              
+              
+              
+                <p>これらの違いを実際にコードを書いて確認していきます。</p>
+              
+              
+              
+                <h3 id="chapter-24" class="js-heading">マイクロタスクはマクロタスクより先に処理される</h3>
+              
+              
+              
+                <p>以下の状態でconsoleに出力して出力順を見ていきたいと思います。</p>
+              
+              
+              
+                <ul>
+                  <li>setTimeoutのコールバック関数内（非同期処理） =&gt; コールスタックからイベントループにより<strong>マクロタスクキュー</strong>に格納される</li>
+                  <li>thenメソッドのコールバック関数内（非同期処理） =&gt; コールスタックからイベントループにより<strong>マイクロタスクキュー</strong>に格納される</li>
+                  <li>Promiseインスタンス内（同期処理） =&gt; コールスタックに追加されメインスレッドでそのまま実行される</li>
+                  <li>グローバルコンテキスト =&gt; コールスタックに追加されメインスレッドでそのまま実行される</li>
+                </ul>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[4]setTimeout'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+              <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              
+              <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token parameter">resolve</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[1]promise'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[3]then'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[2]global'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-json" tabindex="0"><code class="language-json">[1]promise
+              [2]global
+              [3]then
+              [4]setTimeout
+              </code></pre>
+              
+              
+              
+                <p>出力結果を見てみると、まず'[1]promise’出力され、次に'[2]global’が呼ばれました。</p>
+              
+              
+              
+                <p>そして、<strong>上に書いた'[4]setTimeout’よりも先に'[3]then’が出力されています</strong>。</p>
+              
+              
+              
+                <p>このことから<strong>マイクロタスクはマクロタスクより先に処理される</strong>ということがわかりました。</p>
+              
+              
+              
+                <h3 id="chapter-25" class="js-heading">マイクロタスクの実行中にマクロタスクを追加してみる</h3>
+              
+              
+              
                 <p>
-                  KT MEDIAは、Web制作周りやEC関連の記事を定期的に更新している技術ブログです。
-                  学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
-                  尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
+                  次に、マイクロタスクキューに格納される非同期処理はにイベントループが回ってきたら格納されている<strong>全てのタスクをコールスタックに返す</strong>のかを見るために、Promiseチェーンの途中にsetTimeoutを呼び出してみます。
                 </p>
-
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js">Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[1]then'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[4]setTimeout'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[2]then'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'[3]then'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-json" tabindex="0"><code class="language-json">[1]then
+              [2]then
+              [3]then
+              [4]setTimeout
+              </code></pre>
+              
+              
+              
+                <p>Promiseチェーンの実行中にsetTimeout追加すると、thenの処理が全て完了してからsetTimeoutが呼ばれました。</p>
+              
+              
+              
+                <p>このことから、マイクロタスクキューに格納される非同期処理はにイベントループが回ってきたら格納されている<strong>全てのタスクをコールスタックに返す</strong>ことがわかりました。</p>
+              
+              
+              
+                <p>以上のことをまとめると、<strong>コールスタックが空になると、次にマイクロタスクにある処理が実行され、それが全てなくなるとマクロタスクにある処理が実行される</strong>ということになります。</p>
+              
+              
+              
+                <h2 id="chapter-26" class="js-heading">async / await</h2>
+              
+              
+              
+                <p>async / awaitは<strong>Promiseをさらに直感的に書けるようにしたもの</strong>です。</p>
+              
+              
+              
+                <p>つまりPromiseの糖衣構文となります。</p>
+              
+              
+              
+                <p>以下がそれぞれの基本的な特徴としてあげられます。</p>
+              
+              
+              
+                <ul id="block-743d3281-3cc8-4d2d-bba0-9a5d311ef881">
+                  <li><strong>asyncはPromiseオブジェクトを返す</strong></li>
+                  <li><strong>awaitは右辺でPromiseインスタンスを受け取る</strong></li>
+                </ul>
+              
+              
+              
+                <h3 id="chapter-27" class="js-heading">async function</h3>
+              
+              
+              
+                <p>先頭にasyncをつけた関数は非同期関数になり、<strong>Promiseを返却します</strong>。<br>Promiseを返すので、thenメソッドやcatchメソッドでつなぐことが可能です。</p>
+              
+              
+              
+                <p>そして、async functionの特徴として以下が挙げられます。</p>
+              
+              
+              
+                <ul>
+                  <li>値をreturnした場合、その返り値を持つ<strong>Fulfilled</strong>なPromiseインスタンスを返す</li>
+                  <li>Promiseインスタンスをreturnした場合、その返り値のPromiseインスタンスをそのまま返す</li>
+                  <li>例外を<code>throw</code>した場合は、そのエラーを持つ<strong>Rejected</strong>なPromiseを返す</li>
+                </ul>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token comment">// 値を返す</span>
+              <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">resolveFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token string">'正常終了'</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              <span class="token function">resolveFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 正常終了 </span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              
+              <span class="token comment">// Promiseインスタンスを返す</span>
+              <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">rejectFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'異常終了'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              <span class="token function">rejectFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 異常終了</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              
+              <span class="token comment">// 例外をthrowする</span>
+              <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">exceptionFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'例外が発生しました'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              <span class="token function">exceptionFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 例外が発生しました</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <h3 id="chapter-28" class="js-heading">await</h3>
+              
+              
+              
+                <p>
+                  awaitは右辺に<strong>Promiseインスタンス</strong>を受け取り、<code>Promise</code>の結果（<code>resolve</code>もしくは<code>reject</code>）が返されるまで待機する演算子です。<br>注意点として、<strong><code>await</code>は<code>async function</code>の中でしか使えない</strong>、という制約があります。
+                </p>
+              
+              
+              
+                <p>awaitとPromiseを比較をしてみます。</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token comment">// await</span>
+              <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">asyncFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">const</span> val <span class="token operator">=</span> <span class="token keyword">await</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'正常終了'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 正常終了</span>
+              <span class="token punctuation">}</span>
+              <span class="token function">asyncFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+              
+              <span class="token comment">// promise</span>
+              <span class="token keyword">function</span> <span class="token function">promiseFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'正常終了'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; 正常終了</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              <span class="token function">promiseFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+              </code></pre>
+              
+              
+              
+                <p>awaitを使用することでコールバック関数を使わずに実装できていることがわかります。</p>
+              
+              
+              
+                <p>以上のことをまとめると、<br>コールスタックが空になると、次にマイクロタスクにある処理が実行され、それが全てなくなるとマクロタスクにある処理が実行されることになります。</p>
+              
+              
+              
+                <p>マイクロタスクのキューが全てなくなって、マクロタスクにある処理が実行された最中に、マイクロタスクからキューが追加されたら、また、マイクロタスクにあるキューがなくならない限り、マクロタスクにある処理は実行されません。</p>
+              
+              
+              
+                <h2 id="chapter-29" class="js-heading">Promiseチェーンをasync / awaitで書き換える</h2>
+              
+              
+              
+                <p>Promiseのthenチェーン</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sleep</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    val<span class="token operator">++</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">秒経ちました。</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>async / awaitで書き換える</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">sleep</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    val<span class="token operator">++</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">秒経ちました。</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">let</span> val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+                val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> val<span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">秒経ってthenが呼ばれました。</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+              </code></pre>
+              
+              
+              
+                <p>Promise内のresolveが呼ばれたタイミングでawaitに返り値（resolveの引数）が渡ってきます。</p>
+              
+              
+              
+                <p>また、async Functionであるinit()はPromiseを返すことが担保られているので、後述して、thenメソッドを繋げることができます。</p>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                
+              
+              
+              
+                <p>例外を投げた場合</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">function</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    val<span class="token operator">++</span>
+                    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">秒経ちました。</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token function">resolve</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">let</span> val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+                val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// この行以下は実行されません</span>
+                val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                val <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">sleep</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">秒経ってthenが呼ばれました。</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>val<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">秒経って例外が発生しました</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+              </code></pre>
+              
+              
+              
+                <p>出力結果</p>
+              
+              
+              
+                
+                    sizes="(max-width: 564px) 100vw, 564px"></figure>
+              
+              
+              
+                <p>async Functionで throwが呼ばれた場合、init()のcatchに処理が移っていることがわかります。</p>
+              
+              
+              
+                <h3 id="chapter-30" class="js-heading">逐次処理の書き換え</h3>
+              
+              
+              
+                <p>Promiseチェーンでダミーのユーザーリソースを出力</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">usersFetch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                      <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Response body of </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>path<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                      <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"ユーザーデータが見つかりません"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token keyword">const</span> results <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+              
+              <span class="token function">usersFetch</span><span class="token punctuation">(</span><span class="token string">"/users/Taro"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  results<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                  <span class="token keyword">return</span> <span class="token function">usersFetch</span><span class="token punctuation">(</span><span class="token string">"/users/Bob"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  results<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>results<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// =&gt; ['Response body of /users/Taro', 'Response body of /users/Bob']</span>
+              </code></pre>
+              
+              
+              
+                <p>async / awaitで書き換え</p>
+              
+              
+              
+                <pre class="wp-block-preformatted language-js" tabindex="0"><code class="language-js"><span class="token keyword">const</span> <span class="token function-variable function">usersFetch</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">startsWith</span><span class="token punctuation">(</span><span class="token string">"/users"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                      <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">body</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Response body of </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>path<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                      <span class="token function">reject</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"ユーザーデータが見つかりません"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              
+              <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">asyncUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">const</span> results <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">const</span> responseTaro <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">usersFetch</span><span class="token punctuation">(</span><span class="token string">"/users/Taro"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                results<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>responseTaro<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">const</span> responseBob <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">usersFetch</span><span class="token punctuation">(</span><span class="token string">"/users/Bob"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                results<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>responseBob<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> results<span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              <span class="token function">asyncUsers</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">results</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>results<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// =&gt; ['Response body of /users/Taro', 'Response body of /users/Bob']</span>
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              </code></pre>
+              
+              
+              
+                <p>このようにawaitを使った場合は取得と配列へのpushを順番に行ってもネストが深くなることはないので、thenチェーンによるコールバック関数よりも直感的に非同期処理を順番に処理していくことができます。</p>
+              
+              
+              
+                <h2 id="chapter-31" class="js-heading">さいごに</h2>
+              
+              
+              
+                <p>JavaScript の非同期処理を学習してみて、基礎的な部分ですでに頭がパンクしそうですが<br>ユーザー体験に直結するようなところで非常に興味深いテーマでもありますのでこれからも積極的にキャッチアップしていきたいと思います。
+                </p>
+              
+              
+              
+                <h2 id="chapter-32" class="js-heading">参考文献</h2>
+              
+              
+              
+                <ul>
+                  <li><a rel="noreferrer noopener" href="https://www.udemy.com/course/javascript-essence/"
+                      target="_blank">【JS】ガチで学びたい人のためのJavaScriptメカニズム</a></li>
+                  <li><a rel="noreferrer noopener" href="https://jsprimer.net/basic/async/" target="_blank">非同期処理:コールバック/Promise/Async
+                      Function – JavaScript Primer</a></li>
+                  <li><a rel="noreferrer noopener"
+                      href="https://coliss.com/articles/build-websites/operation/javascript/javascript-visualized-event-loop.html"
+                      target="_blank">JavaScript イベントループの仕組みをGIFアニメで分かりやすく解説 | コリス</a></li>
+                  <li><a rel="noreferrer noopener" href="https://dev.to/lydiahallie/javascript-visualized-event-loop-3dif"
+                      target="_blank">&nbsp;JavaScript Visualized: Event Loop</a></li>
+                  <li><a rel="noreferrer noopener"
+                      href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+                      target="_blank">Promise – JavaScript | MDN</a></li>
+                  <li><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function"
+                      target="_blank" rel="noreferrer noopener">非同期関数 – JavaScript | MDN</a></li>
+                  <li><a href="https://developer.mozilla.org/ja/docs/Learn/JavaScript/Asynchronous/Introducing" target="_blank"
+                      rel="noreferrer noopener">非同期プログラミングの一般的概念 – JavaScript | MDN</a></li>
+                </ul>
+              
+              
+              
+                <p></p>
+              
+              
+              
+                <p></p>
+              
+              
+              
+                <p></p>
                 <div class="p-single__sns">
                   <span class="u-hidden">SNSでシェアする</span>
                   <a href="" class="p-single__sns-link">
@@ -109,13 +1334,13 @@
                     </svg>
                   </a>
                 </div>
-              </div>
+              </article>
             </div>
           </main>
 
           <%- include('../common/_sidebar') %>
         </div>
-        <div class="p-related l-container l-container--small">
+        <div class="p-related l-container">
           <h2 class="p-related__heading">
             関連記事
           </h2>

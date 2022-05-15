@@ -23,7 +23,7 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 
-<body>
+<body data-barba="wrapper">
   <a class="skip-link" href="#main" tabindex="0">メインコンテンツにスキップ</a>
 
   <div class="site-wrapper">
@@ -49,26 +49,5 @@
         <p class="p-header__text">
           マークアップ、フロントエンド、Webデザイン学習ブログ。
         </p>
-        <div class="p-header__foot">
-          <nav class="p-global-nav">
-            <ul class="p-global-nav__list">
-              <% for(let page in jsonData.nav){ %>
-                <% if (page===pageId) { %>
-                <li class="p-global-nav__item">
-                  <a class="p-global-nav__link is-current">
-                    <%= jsonData.nav[page].name %>
-                  </a>
-                </li>
-                <% } else { %>
-                <li class="p-global-nav__item">
-                  <a href="<%= jsonData.nav[page].slug %>" class="p-global-nav__link">
-                    <%= jsonData.nav[page].name %>
-                  </a>
-                </li>
-                <% } %>
-              <% }; %>
-            </ul>
-          </nav>
-        </div>
       </div>
     </header>

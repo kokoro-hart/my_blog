@@ -4,16 +4,11 @@
 //--------------------------------------------------------------------------
 
 .p-archive {
-  flex: 1;
-  background-color: global.$color-base;
-}
-
-.p-archive__inner {
-  padding-top: 52px;
-  padding-bottom: 84px;
+  margin-top: 52px;
+  margin-bottom: 84px;
 
   @include global.mq(md) {
-    padding-top: 84px;
+    margin-top: 84px;
   }
 
   @include global.mq(lg) {

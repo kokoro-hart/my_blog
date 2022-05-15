@@ -1,0 +1,21 @@
+<nav class="p-global-nav">
+  <div class="p-global-nav__inner l-container">
+    <ul class="p-global-nav__list">
+      <% for(let page in jsonData.nav){ %>
+        <% if (page===pageId) { %>
+        <li class="p-global-nav__item">
+          <a class="p-global-nav__link is-current">
+            <%= jsonData.nav[page].name %>
+          </a>
+        </li>
+        <% } else { %>
+          <li class="p-global-nav__item">
+            <a href="<%= jsonData.nav[page].slug %>" class="p-global-nav__link">
+              <%= jsonData.nav[page].name %>
+            </a>
+          </li>
+        <% } %>
+      <% }; %>
+    </ul>
+  </div>
+</nav>

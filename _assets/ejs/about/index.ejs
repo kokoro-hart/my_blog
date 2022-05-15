@@ -3,14 +3,12 @@
 <%- include('../common/_header', {pageId:pageId }) %>
 
 <% console.log(jsonData) %>
-<div class="p-archive">
-  <div class="p-archive__inner l-container">
+<div class="l-content"  data-barba="container" data-barba-namespace="about">
+  <%- include('../common/_global-nav', {pageId:pageId }) %>
+  <div class="p-archive l-container">
     <main id="main" class="p-archive__main p-single">
       <div class="p-single__inner">
         <div class="p-single__head">
-          <time class="p-single__date">
-            2022/04/11
-          </time>
           <h2 class="p-single__heading">
             このサイトについて
           </h2>
@@ -24,7 +22,7 @@
             学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合は<a href="/contact/">お問い合わせ</a>よりご連絡をお願いいたします。
             尚、記事内にあるコード等はそのままご利用していただいて問題ありません。
           </p>
-          <h1>はじめた経緯</h1>
+          <h2>はじめた経緯</h2>
           <p>
             KT MEDIAは、Web制作周りやフロントエンド技術関連の記事を定期的に更新している技術ブログです。
             学習の過程での備忘録を兼ねて更新していますので、間違いやより良いものがあった場合はお問い合わせよりご連絡をお願いいたします。
