@@ -131,10 +131,23 @@ const replaceHead = (data) => {
     head.appendChild(newHeadTags[i]);
   }
 }
+const spinner = document.getElementById('js-loading');
+
+function endLoading() {
+  spinner.classList.add('loaded');
+}
+function initLoading() {
+  spinner.classList.remove('loaded');
+}
+
+window.onload = endLoading();
 
 //barba.init
 barba.init({
   transitions: [{
+    beforeLeave() {
+      
+    },
     beforeEnter({ next }) {
       contactForm7Run(next);
     },
@@ -156,6 +169,10 @@ barba.init({
   }
 });
 
+barba.hooks.before((data) => {
+  initLoading();
+});
+
 barba.hooks.beforeEnter((data) => {
   initSmoothScroll();
   Prism.highlightAll();
@@ -167,7 +184,7 @@ barba.hooks.afterEnter(() => {
 });
 
 barba.hooks.after((data) => {
-  tuningSidebar();
+    endLoading();
 
   //ページ遷移後にAnalyticsにトラッキングを送信
   if (typeof ga === 'function') {
@@ -175,3 +192,4 @@ barba.hooks.after((data) => {
     ga('send', 'pageview');
   }
 });
+
