@@ -16,3 +16,12 @@
     padding-left: 40px;
   }
 }
+
+.l-container--single {
+  padding: 0;
+
+  @include global.mq(md) {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}

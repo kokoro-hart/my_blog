@@ -5,7 +5,7 @@
     <% console.log(jsonData) %>
       <div class="l-content"  data-barba="container" data-barba-namespace="contact">
         <%- include('../common/_global-nav', {pageId:pageId }) %>
-        <div class="p-archive l-container">
+        <div class="p-archive l-container l-container--single">
           <main id="main" class="p-archive__main p-single">
             <div class="p-single__inner">
               <div class="p-single__head">
@@ -71,6 +71,92 @@
               
                   <div class="p-form__submit-wrapper">
                     <input type="submit" class="c-button-submit" value="送信">
+                  </div>
+                </div>
+
+                <div class="wp-block-contact-form-7-contact-form-selector">
+                  <div role="form" class="wpcf7" id="wpcf7-f5-o1" lang="ja" dir="ltr">
+                    <div class="screen-reader-response">
+                      <p role="status" aria-live="polite" aria-atomic="true"></p>
+                      <ul></ul>
+                    </div>
+                    <form action="/contact/#wpcf7-f5-o1" method="post" class="wpcf7-form init" novalidate="novalidate"
+                      data-status="init">
+                      <div style="display: none;">
+                        <input type="hidden" name="_wpcf7" value="5">
+                        <input type="hidden" name="_wpcf7_version" value="5.5.6.1">
+                        <input type="hidden" name="_wpcf7_locale" value="ja">
+                        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f5-o1">
+                        <input type="hidden" name="_wpcf7_container_post" value="0">
+                        <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                      </div>
+                      <div class="p-form">
+                        <dl class="p-form__dl">
+                          <!--お名前-->
+                          <p></p>
+                          <div class="p-form__row">
+                            <dt class="p-form__dt">
+                              <label class="p-form__label p-form__label--required" for="your-name">お名前</label>
+                            </dt>
+                            <dd class="p-form__dd">
+                              <span class="wpcf7-form-control-wrap your-name"><input type="text" name="your-name" value="" size="40"
+                                  class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required p-form__input" id="your-name"
+                                  aria-required="true" aria-invalid="false" placeholder="山田　太郎"></span>
+                            </dd>
+                          </div>
+                          <p>
+                            <!--/お名前--><br>
+                            <!--メールアドレス-->
+                          </p>
+                          <div class="p-form__row">
+                            <dt class="p-form__dt">
+                              <label class="p-form__label p-form__label--required" for="your-email">メールアドレス</label>
+                            </dt>
+                            <dd class="p-form__dd">
+                              <span class="wpcf7-form-control-wrap your-email"><input type="email" name="your-email" value="" size="40"
+                                  class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email p-form__input"
+                                  id="your-email" aria-required="true" aria-invalid="false" placeholder="xxx@example.com"></span>
+                            </dd>
+                          </div>
+                          <p>
+                            <!--/メールアドレス--><br>
+                            <!--件名-->
+                          </p>
+                          <div class="p-form__row">
+                            <dt class="p-form__dt">
+                              <label class="p-form__label" for="your-subject">件名（任意）</label>
+                            </dt>
+                            <dd class="p-form__dd">
+                              <span class="wpcf7-form-control-wrap your-subject"><input type="text" name="your-subject" value=""
+                                  size="40" class="wpcf7-form-control wpcf7-text p-form__input" id="your-subject" aria-invalid="false"
+                                  placeholder="〇〇について"></span>
+                            </dd>
+                          </div>
+                          <p>
+                            <!--/件名--><br>
+                            <!--お問い合わせ内容-->
+                          </p>
+                          <div class="p-form__row">
+                            <dt class="p-form__dt">
+                              <label class="p-form__label p-form__label--required" for="your-textarea">お問い合わせ内容</label>
+                            </dt>
+                            <dd class="p-form__dd">
+                              <span class="wpcf7-form-control-wrap your-textarea"><textarea name="your-textarea" cols="40" rows="10"
+                                  class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required p-form__input p-form__textarea"
+                                  id="your-textarea" aria-required="true" aria-invalid="false"
+                                  placeholder="ご自由にご記入ください。"></textarea></span>
+                            </dd>
+                          </div>
+                          <p>
+                            <!--/お問い合わせ内容-->
+                          </p>
+                        </dl>
+                        <div class="p-form__submit-wrapper">
+                          <input type="submit" value="送信" class="wpcf7-form-control has-spinner wpcf7-submit c-button-submit">
+                        </div>
+                      </div>
+                      <div class="wpcf7-response-output" aria-hidden="true"></div>
+                    </form>
                   </div>
                 </div>
               </div>
