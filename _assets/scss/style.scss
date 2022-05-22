@@ -18,6 +18,7 @@
 @use "object/component/c-button-switch";
 @use "object/component/c-pagination";
 @use "object/component/c-button-submit";
+@use "object/component/c-button-primary";
 
 /* Project (prefix: p- )
    ----------------------------------------------------------------- */
@@ -35,6 +36,7 @@
 @use "object/Project/p-form";
 @use "object/Project/p-footer";
 @use "object/Project/p-footer-nav";
+@use "object/Project/p-error";
 
 /* Utitlity (prefix: u- )
    ----------------------------------------------------------------- */

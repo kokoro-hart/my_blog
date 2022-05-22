@@ -1,0 +1,23 @@
+@use "foundation/global";
+
+// Component ボタン
+//--------------------------------------------------------------------------
+
+.c-button-primary {
+  @include global.fz(16, 18);
+  @include global.lh(1.7);
+  padding: 8px 14px;
+  border-radius: 5px;
+  background-color: global.$color-base-thin;
+  box-shadow: global.$box-shadow;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+
+  @include global.mq(md) {
+    padding: 12px 18px;
+  }
+}

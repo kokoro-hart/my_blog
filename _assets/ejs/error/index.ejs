@@ -1,0 +1,24 @@
+<% let pageId='error' ; %>
+
+<%- include('../common/_header', {pageId:pageId }) %>
+
+<% console.log(jsonData) %>
+<div class="l-content"  data-barba="container" data-barba-namespace="about">
+  <%- include('../common/_global-nav', {pageId:pageId }) %>
+  <div class="p-error l-container">
+    <div class="p-error__inner">
+      <h2 class="p-error__heading">
+        404
+      </h2>
+      <p class="p-error__text">
+        お探しのページが見つかりませんでした。
+      </p>
+      <div class="p-error__link-wrapper">
+        <a href="/" class="c-button-primary">記事一覧へ</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%- include('../common/_footer', {pageId:pageId }) %>

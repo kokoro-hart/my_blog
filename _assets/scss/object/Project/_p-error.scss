@@ -1,0 +1,31 @@
+@use "foundation/global";
+
+// Project 404ページ
+//--------------------------------------------------------------------------
+
+.p-error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 308.61px);
+  text-align: center;
+}
+
+.p-error__heading {
+  @include global.fz(80,120);
+  @include global.lh(1.2);
+  font-weight: 600;
+}
+
+.p-error__text {
+  @include global.fz(16, 18);
+  @include global.lh(1.7);
+  font-weight: 600;
+  color: global.$color-primary-thin;
+}
+
+.p-error__link-wrapper {
+  width: 100%;
+  margin-top: 32px;
+}
