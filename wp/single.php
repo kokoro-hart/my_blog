@@ -3,7 +3,7 @@
 
 <div class="l-content" data-barba="container" data-barba-namespace="single">
   <?php get_template_part('./modules/global-nav') ?>
-  <div class="p-archive l-container">
+  <div class="p-archive l-container l-container--sp-full-width">
     <main id="main" class="p-archive__main p-single">
       <div class="p-single__inner">
         <div class="p-single__head">
@@ -61,30 +61,31 @@
     <?php get_sidebar(); ?>
   </div>
   
+
+  <?php 
+    if(has_category()) {
+      $post_cats = get_the_category();
+      $cat_ids = array();
+      foreach($post_cats as $cat) {
+        $cat_ids[] = $cat->term_id;
+      }
+    } 
+
+    $related_posts = get_posts(array( 
+      'post_type' => 'post',//投稿タイプを表示
+      'posts_per_page' => '4',
+      'post__not_in' => array($post->ID),//表示中の投稿を除外($post = 投稿情報)
+      'category__in' => $cat_ids,//この投稿と同じカテゴリーの中から
+      'orderby' => 'rand',//ランダムで表示
+    ));
+  ?>
+  <?php if($related_posts) : ?>
   <div class="p-related l-container">
     <h2 class="p-related__heading">
       関連記事
     </h2>
     <div class="p-related__cards">
-      <?php 
-        if(has_category()) {
-          $post_cats = get_the_category();
-          $cat_ids = array();
-          foreach($post_cats as $cat) {
-            $cat_ids[] = $cat->term_id;
-          }
-        } 
-
-        $related_posts = get_posts(array( 
-          'post_type' => 'post',//投稿タイプを表示
-          'posts_per_page' => '4',
-          'post__not_in' => array($post->ID),//表示中の投稿を除外($post = 投稿情報)
-          'category__in' => $cat_ids,//この投稿と同じカテゴリーの中から
-          'orderby' => 'rand',//ランダムで表示
-        ));
-        if($related_posts) : 
-        foreach($related_posts as $post) : setup_postdata($post);
-        ?>
+      <?php foreach($related_posts as $post) : setup_postdata($post); ?>
       <article class="p-related__card">
         <a href="<?php the_permalink(); ?>" class="p-card">
           <?php if($post_cats[0]) : ?>
@@ -113,12 +114,10 @@
           </div>
         </a>
       </article>
-      <?php
-        endforeach; wp_reset_postdata();
-        endif;
-      ?>
+      <?php endforeach; wp_reset_postdata(); ?>
     </div>
   </div>
+  <?php endif; ?>
 </div>
 
 <?php get_footer(); ?>
