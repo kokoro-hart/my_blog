@@ -25,7 +25,7 @@
 
 .p-archive__main {
   @include global.mq(lg) {
-    width: calc(100% - 300px - 5%);
+    width: calc(100% - 320px - 3.51%);
   }
 }
 
@@ -65,7 +65,7 @@
   width: 100%;
 
   @include global.mq(lg) {
-    max-width: 300px;
+    max-width: 320px;
   }
 }
 
