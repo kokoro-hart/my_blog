@@ -28,19 +28,16 @@
     width: calc(50% - 3% / 2);
     margin-bottom: 3%;
 
-    &:not(:first-child) {
+    &:nth-child(2n){
       margin-left: 3%;
     }
   }
 
-  @include global.mq(lg, max) {
-    &:nth-child(2n + 1) {
-      margin-left: 0;
-    }
-  }
-
-  @include global.mq(lg) {
+  @include global.mq(1024px, min) {
+    width: calc(25% - 2% * 3 / 4);
     margin-bottom: 0;
-    width: calc(25% - 3% * 3 / 4);
+    &:not(:first-child) {
+      margin-left: 2%;
+    }
   }
 }
