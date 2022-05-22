@@ -2,7 +2,6 @@
  * @modules : node_modulesフォルダまでの絶対パスのエイリアス
  * webpack.config.jsにて定義している
  */
-import $ from "@modules/jquery";
 import barba from '@modules/@barba/core';
 import Prism from './lib/prism';
 import './modules/theme';
@@ -90,13 +89,10 @@ tuningSidebar();
 
 // Contact Form 7を正常動作させるための関数
 function contactForm7Run(next) {
-  var cfSelector = 'div.wpcf7 > form';
-  var cfForms = $(next.container).find(cfSelector);
-  if (cfForms.length) {
-    $(cfSelector).each(function () {
-      var $form = $(this);
-      wpcf7.init($form[0]);
-    });
+  let cfForms = next.container.document.querySelector('.wpcf7 form');
+  for (var i = 0; i < cfForms.length; i++) {
+    let form = cfForms[i];
+    wpcf7.init(form[0]);
   }
 }
 
@@ -134,10 +130,10 @@ const replaceHead = (data) => {
 const spinner = document.getElementById('js-loading');
 
 function endLoading() {
-  spinner.classList.add('loaded');
+  spinner.classList.add('is-loaded');
 }
 function initLoading() {
-  spinner.classList.remove('loaded');
+  spinner.classList.remove('is-loaded');
 }
 
 window.onload = endLoading();
@@ -145,9 +141,6 @@ window.onload = endLoading();
 //barba.init
 barba.init({
   transitions: [{
-    beforeLeave() {
-      
-    },
     beforeEnter({ next }) {
       contactForm7Run(next);
     },
@@ -184,12 +177,11 @@ barba.hooks.afterEnter(() => {
 });
 
 barba.hooks.after((data) => {
-    endLoading();
-
+  tuningSidebar();
+  endLoading();
   //ページ遷移後にAnalyticsにトラッキングを送信
   if (typeof ga === 'function') {
     ga('set', 'page', window.location.pathname);
     ga('send', 'pageview');
   }
 });
-
