@@ -29,6 +29,23 @@
   }
 }
 
+.p-archive__sidebar {
+  width: 100%;
+
+  @include global.mq(lg) {
+    max-width: 320px;
+  }
+}
+
+.p-archive__posts {
+  padding-right:14px;
+  padding-left: 14px;
+
+  @include global.mq(md) {
+    padding: 0;
+  }
+}
+
 .p-archive__cards {
   display: flex;
   justify-content: space-between;
@@ -58,14 +75,6 @@
   @include global.mq(sm) {
     width: calc(50% - 3% / 2);
     margin-bottom: 3%;
-  }
-}
-
-.p-archive__sidebar {
-  width: 100%;
-
-  @include global.mq(lg) {
-    max-width: 320px;
   }
 }
 
