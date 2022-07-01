@@ -82,14 +82,14 @@ function my_pagination()
 
 /*------------------------------------------------------------------*/
 // scriptタグにdefer属性を追加
-// function scriptLoader($script, $handle, $src) {
-// 	if (is_admin()) {
-// 		return $script;
-// 	}
-// 	$script = sprintf('<script src="%s" type="text/javascript" defer=""></script>' . "\n", $src);
-// 	return $script;
-// }
-// add_filter('script_loader_tag', 'scriptLoader', 10, 5);
+function scriptLoader($script, $handle, $src) {
+	if (is_admin()) {
+		return $script;
+	}
+	$script = sprintf('<script src="%s" type="text/javascript" defer=""></script>' . "\n", $src);
+	return $script;
+}
+add_filter('script_loader_tag', 'scriptLoader', 10, 5);
 
 
 /*------------------------------------------------------------------*/

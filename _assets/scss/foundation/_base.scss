@@ -10,18 +10,18 @@
 html {
   width: 100%;
   min-height: 100vh;
-  height: 100%; 
+  height: 100%;
 }
 
 html,
 body {
   width: 100%;
   height: 100%;
-  font-feature-settings: 'palt';
-  box-sizing: border-box; 
-  -webkit-font-smoothing: antialiased; 
-  -moz-osx-font-smoothing: grayscale; 
-  -webkit-tap-highlight-color: transparent; 
+  font-feature-settings: "palt";
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -30,16 +30,17 @@ body {
   margin: 0;
   padding: 0;
   color: global.$color-primary;
-  background-color: global.$color-base-thin;
+  background-color: global.$color-base;
   @include global.fz(14, 16);
   @include global.lh(1.7, 1.6);
   font-weight: 400;
   font-family: global.$font-family;
 }
 
-body.is-drawer-active {
+body.is-fixed {
   min-height: 100vh;
   overflow: hidden;
+  pointer-events: none;
 }
 
 body:not(br),
@@ -57,7 +58,6 @@ input {
 main {
   display: block;
   width: 100%;
-  z-index: map-get(global.$layer, main);
 }
 
 a {
@@ -128,6 +128,7 @@ ol {
 }
 
 iframe {
+  width: 100%;
   border-style: none;
 }
 
@@ -187,4 +188,10 @@ button:focus {
   overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
+}
+
+code {
+	background-color: global.$color-secondary;
+	border-radius: 5px;
+	padding: 0px 4px;
 }

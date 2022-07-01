@@ -127,12 +127,15 @@ const replaceHead = (data) => {
     head.appendChild(newHeadTags[i]);
   }
 }
-const spinner = document.getElementById('js-loading');
 
+// ローダー
+const spinner = document.getElementById('js-loading');
 function endLoading() {
+  document.body.classList.remove('is-fixed');
   spinner.classList.add('is-loaded');
 }
 function initLoading() {
+  document.body.classList.add('is-fixed');
   spinner.classList.remove('is-loaded');
 }
 
@@ -180,8 +183,9 @@ barba.hooks.after((data) => {
   tuningSidebar();
   endLoading();
   //ページ遷移後にAnalyticsにトラッキングを送信
-  if (typeof ga === 'function') {
-    ga('set', 'page', window.location.pathname);
-    ga('send', 'pageview');
+  if (typeof gtag === 'function') {
+    gtag('config', window.GA_MEASUREMENT_ID, {
+      page_path: window.location.pathname
+    });
   }
 });

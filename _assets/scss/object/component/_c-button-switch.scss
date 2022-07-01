@@ -40,12 +40,12 @@
     width: 20px;
     height: 20px;
     background-color: global.$color-base;
-    transition: left 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65), width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65),
-      transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65);
-
+    
     @include global.mq(md) {
       width: 30px;
       height: 30px;
+      transition: right 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65), left 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65), width 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65),
+      transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1.65);
     }
   }
 }

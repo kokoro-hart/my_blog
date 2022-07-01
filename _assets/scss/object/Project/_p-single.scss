@@ -46,23 +46,9 @@
 
 .p-single__thumbnail {
   position: relative;
-  border-radius: 10px;
   overflow: hidden;
   margin-top: 32px;
   padding-top: calc(9 / 16 * 100%);
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    border: 2px solid global.$color-secondary;
-    border-radius: 10px;
-  }
 
   img {
     position: absolute;
