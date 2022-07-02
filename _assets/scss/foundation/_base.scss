@@ -195,3 +195,10 @@ code {
 	border-radius: 5px;
 	padding: 0px 4px;
 }
+
+br {
+  content: "";
+  display: block;
+  height: 0;
+  line-height: 0;
+}

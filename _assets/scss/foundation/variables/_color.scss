@@ -5,7 +5,7 @@
 //ライトテーマ時のカラー
 :root,
 [theme="light"] {
-  --color-base: #f1f5f9;
+  --color-base: #f3f4f6;
   --color-base-thin: #fefefe;
   --color-primary: #000000d1;
   --color-primary-thin: #6e7b85;
@@ -34,6 +34,6 @@ $color-secondary-thin:var(--color-secondary-thin);
 $color-gray-thin: var(--color-gray-thin);
 
 //テーマ切り替えでも変わらない色
-$color-accent: #67C7D4;
+$color-accent: #80C0C0;
 $color-base-fix: #fff;
 $color-primary-fix: #000;

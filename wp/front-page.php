@@ -7,7 +7,7 @@
     <main id="main" class="p-archive__main">
       <div class="p-archive__posts">
         <h2 class="p-archive__heading">
-          すべての記事
+          新着記事
         </h2>
         <div class="p-archive__cards">
           <?php
@@ -18,9 +18,6 @@
           <article class="p-archive__card">
             <a href="<?php the_permalink(); ?>" class="p-card">
               <?php if($category[0]) : ?>
-              <span class="p-card__category">
-                <?php echo $category[0]->cat_name; ?>
-              </span>
               <?php endif; ?>
               <div class="p-card__thumbnail">
                 <?php
@@ -36,6 +33,9 @@
                 ?>
               </div>
               <div class="p-card__body">
+              <span class="p-card__category u-hidden-md-down">
+                <?php echo $category[0]->cat_name; ?>
+              </span>
                 <h3 class="p-card__title">
                   <?php the_title(); ?>
                 </h3>

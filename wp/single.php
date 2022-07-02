@@ -87,12 +87,7 @@
     <div class="p-related__cards">
       <?php foreach($related_posts as $post) : setup_postdata($post); ?>
       <article class="p-related__card">
-        <a href="<?php the_permalink(); ?>" class="p-card">
-          <?php if($post_cats[0]) : ?>
-            <span class="p-card__category">
-              <?php echo $post_cats[0]->cat_name; ?>
-            </span>
-          <?php endif; ?>
+        <a href="<?php the_permalink(); ?>" class="p-card p-card--related">
           <div class="p-card__thumbnail">
             <?php
               if(has_post_thumbnail()) {
@@ -105,6 +100,11 @@
             ?>
           </div>
           <div class="p-card__body">
+            <?php if($post_cats[0]) : ?>
+              <span class="p-card__category u-hidden-md-down">
+                <?php echo $post_cats[0]->cat_name; ?>
+              </span>
+            <?php endif; ?>
             <h3 class="p-card__title">
               <?php the_title(); ?>
             </h3>

@@ -3,13 +3,8 @@
 // Project サイドバー 目次
 //-------------------------------------------------------------------------
 
-.p-toc-sidebar {
-  padding-top: 32px;
-}
-
 .p-toc-sidebar__inner {
-  border-radius: 10px;
-  box-shadow: global.$box-shadow-thin;
+  border-radius: 5px;
   background-color: global.$color-base-thin;
   overflow: scroll;
   height: 100%;

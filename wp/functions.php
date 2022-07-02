@@ -105,6 +105,14 @@ return $wb;
 }
 add_filter('user_contactmethods', 'my_user_meta', 10, 1);
 
+/*------------------------------------------------------------------*/
+//カテゴリリストの投稿数をリンクに含む
+function my_list_categories( $output, $args ) {
+  $output = preg_replace( '/<\/a>\s*\((\d+)\)/', ' ($1)</a>', $output );
+  return $output;
+}
+add_filter( 'wp_list_categories', 'my_list_categories', 10, 2 );
+
 
 /*------------------------------------------------------------------*/
 // シンタックスハイライトのショートコード

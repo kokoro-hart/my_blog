@@ -3,12 +3,11 @@
 // Project 記事詳細ページ
 //-------------------------------------------------------------------------
 .p-single__inner {
-  box-shadow: global.$box-shadow-thin;
   background-color: global.$color-base-thin;
   padding: 20px 16px 40px;
 
   @include global.mq(md) {
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 40px 40px 80px;
   }
 }
@@ -26,14 +25,14 @@
 
 .p-single__heading {
   margin-top: 4px;
-  @include global.fz(20, 28);
+  @include global.fz(20, 24);
   @include global.lh(1.44);
   font-weight: 600;
 }
 
 .p-single__category {
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 3px;
   margin-top: 10px;
   padding: 3px 6px;
   color: global.$color-base-fix;
@@ -76,7 +75,7 @@
     padding-top: 52px;
     padding-bottom: 5px;
     margin-bottom: 18px;
-    @include global.fz(20, 28);
+    @include global.fz(20, 24);
     @include global.lh(1.5);
 
     @include global.mq(md) {
@@ -87,7 +86,7 @@
   h3 {
     padding-top: 42px;
     padding-bottom: 10px;
-    @include global.fz(18, 24);
+    @include global.fz(18, 20);
     @include global.lh(1.5);
 
     @include global.mq(md) {

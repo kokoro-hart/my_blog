@@ -17,11 +17,6 @@
           ?>
           <article class="p-archive__card">
             <a href="<?php the_permalink(); ?>" class="p-card">
-              <?php if($category[0]) : ?>
-              <span class="p-card__category">
-                <?php echo $category[0]->cat_name; ?>
-              </span>
-              <?php endif; ?>
               <div class="p-card__thumbnail">
                 <?php
                   $post_title = get_the_title();
@@ -36,6 +31,11 @@
                 ?>
               </div>
               <div class="p-card__body">
+                <?php if($category[0]) : ?>
+                  <span class="p-card__category u-hidden-md-down">
+                    <?php echo $category[0]->cat_name; ?>
+                  </span>
+                <?php endif; ?>
                 <h3 class="p-card__title">
                   <?php the_title(); ?>
                 </h3>

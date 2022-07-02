@@ -58,15 +58,9 @@
       <div class="p-header__inner l-container">
         <div class="p-header__head">
           <h1 class="p-header__logo">
-            <?php if(is_front_page()) : ?>
-              <a class="p-header__logo-link">
-                <?php bloginfo( 'name' ); ?>
-              </a>
-            <?php else: ?>
-              <a href="<?php echo esc_url(home_url('/')); ?>" class="p-header__logo-link">
-                <?php bloginfo( 'name' ); ?>
-              </a>
-            <?php endif; ?>
+            <a class="p-header__logo-link" href="<?php echo esc_url(home_url('/')); ?>">
+              <?php bloginfo( 'name' ); ?>
+            </a>
           </h1>
           <button class="p-header__switch-button c-button-switch" id="js-change-mode" data-theme="" aria-label="カラーテーマ切り替え">
           </button>

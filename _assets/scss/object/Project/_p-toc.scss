@@ -4,10 +4,10 @@
 //-------------------------------------------------------------------------
 
 .p-toc {
-  border-radius: 7px;
+  border-radius: 3px;
   margin-top: 32px;
   padding: 1px 20px 20px;
-  background: global.$color-secondary;
+  border: 1px solid global.$color-secondary;
 
   @include global.mq(md) {
     padding: 1px 24px 24px;

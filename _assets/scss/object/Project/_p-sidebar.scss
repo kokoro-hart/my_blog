@@ -5,25 +5,16 @@
 
 .p-sidebar {
   margin-top: 84px;
-  
+
   @include global.mq(lg) {
     margin-top: 0;
-  }
-}
-
-.p-sidebar__inner {
-  box-shadow: global.$box-shadow-thin;
-  background-color: global.$color-base-thin;
-  padding: 40px 20px;
-
-  @include global.mq(md) {
-    border-radius: 10px;
   }
 }
 
 .p-sidebar__sticky {
   position: sticky;
   top: 0;
+  padding-top: 32px;
 }
 
 .p-sidebar__heading {
@@ -33,28 +24,29 @@
 }
 
 .p-sidebar__content {
-  padding-top: 52px;
+  background-color: global.$color-base-thin;
+  padding: 40px 20px;
+
+  @include global.mq(md) {
+    border-radius: 5px;
+  }
+  &:not(:first-child) {
+    margin-top: 32px;
+  }
 }
 
 .p-sidebar__list {
   margin-top: 18px;
-}
+  border-bottom: 1px solid global.$color-secondary;
 
-.p-sidebar__item {
-  &:not(:first-child) {
-    margin-top: 7px; 
-  }
-}
-
-.p-sidebar__link {
-  display: block;
-  color: global.$color-primary-thin;
-  @include global.fz(14, 14.45);
-  @include global.lh(1.77);
-  font-weight: 600;
-
-  &:hover,
-  &:focus {
-    color: global.$color-primary;
+  .cat-item {
+    border-top: 1px solid global.$color-secondary;
+    a {
+      display: block;
+      padding: 10px 0;
+      @include global.fz(14, 14.45);
+      @include global.lh(1.77);
+      font-weight: 400;
+    }
   }
 }
